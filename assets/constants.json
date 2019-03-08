@@ -1,0 +1,82 @@
+[
+  {
+    "items": [
+      {
+        "text": "RADIUS = ",
+        "options": []
+      },
+      {
+        "text": "100",
+        "options": [
+          "50",
+          "100",
+          "150"
+        ]
+      }
+    ]
+  },
+  {
+    "items": [
+      {
+        "text": "RADIUS = ",
+        "options": []
+      },
+      {
+        "text": "100",
+        "options": [
+          "50",
+          "100",
+          "150"
+        ]
+      }
+    ]
+  },
+  {
+    "items": [
+      {
+        "text": "RADIUS = ",
+        "options": []
+      },
+      {
+        "text": "100",
+        "options": [
+          "50",
+          "100",
+          "150"
+        ]
+      }
+    ]
+  },
+  {
+    "items": [
+      {
+        "text": "RADIUS = ",
+        "options": []
+      },
+      {
+        "text": "100",
+        "options": [
+          "50",
+          "100",
+          "150"
+        ]
+      }
+    ]
+  },
+  {
+    "items": [
+      {
+        "text": "WIDTH = ",
+        "options": []
+      },
+      {
+        "text": "300",
+        "options": [
+          "300",
+          "400",
+          "500"
+        ]
+      }
+    ]
+  }
+]
