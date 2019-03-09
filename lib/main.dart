@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:spritewidget/spritewidget.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
 import 'dart:convert';
+import 'package:spritewidget/spritewidget.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(new MyApp());
+  });
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -27,258 +32,169 @@ class MyWidget extends StatefulWidget {
   _MyWidgetState createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  VoidCallback _showBottomSheetCallback;
-  NodeWithSize rootNode;
-  List<Line> lines;
+class _MyWidgetState extends State<MyWidget>
+    with SingleTickerProviderStateMixin {
+  List<List<List<Line>>> lines = [];
+  NodeWithSize _rootNode;
+  TabController _tabController;
+  RedCircle circle;
 
   @override
   void initState() {
     super.initState();
-    rootNode = NodeWithSize(const Size(1024.0, 1024.0));
-    _initializeFields();
-  }
+    _rootNode = NodeWithSize(const Size(1024.0, 1024.0));
+    circle = RedCircle(100.0);
+    circle.position = const Offset(512.0, 512.0);
+    _rootNode.addChild(circle);
 
-  @override
-  void reassemble() {
-    _initializeFields();
-    super.reassemble();
-  }
-
-  void _initializeFields() {
-    _showBottomSheetCallback = _showBottomSheet;
-    _refresh();
-  }
-
-  void _refresh() {
-    final Node circle = RedCircle(100.0);
-    circle.position = const Offset(300.0, 300.0);
-
-    rootNode.removeAllChildren();
-    rootNode.addChild(circle);
+    _tabController = TabController(length: 6, vsync: this);
+    _tabController.index = 0;
+    _tabController.addListener(onChangeTab);
 
     _loadJson();
   }
 
   void _loadJson() async {
-    String constantsJson = await rootBundle.loadString("assets/constants.json");
-    List constants = json.decode(constantsJson);
-    lines =
-        constants.map((dynamic constant) => Line.fromJson(constant)).toList();
+    String data = await rootBundle.loadString("assets/data.json");
+    List tabs = json.decode(data);
+    setState(() {
+      lines = tabs.map((dynamic tab) {
+        List lines = tab;
+        return lines.map((dynamic line) {
+          List items = line;
+          return items.map((dynamic item) => Line.fromJson(item)).toList();
+        }).toList();
+      }).toList();
+    });
   }
 
-  void _showBottomSheet() {
-    setState(() {
-      _showBottomSheetCallback = null;
-    });
-    final List<Widget> tabBars = <Widget>[
-      const Tab(icon: Icon(Icons.directions_car), text: 'test 2'),
-      const Tab(icon: Icon(Icons.directions_transit), text: 'test 2'),
-      const Tab(icon: Icon(Icons.directions_bike), text: 'test 2'),
-    ];
-    List<Widget> tabViews = <Widget>[
-      Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: lines.map((line) {
-            return ListTile(
-                title: Row(
-              children: line.items.map((item) {
-                if (item.options.isEmpty) {
-                  return Text(item.text);
-                } else {
-                  return DropdownButton<String>(
-                      value: item.text,
-                      onChanged: (String newValue) {
-                        setState(() {
-                          print("newValue");
-                          print(newValue);
-                          item.text = newValue;
-                          print(item.text);
-                        });
-                      },
-                      items: item.options
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      iconSize: 0,
-                      style: TextStyle(
-                          color: Colors.red,
-                          //fontWeight: FontWeight.bold,
-                          fontSize: 16.0));
-                }
-              }).toList(),
-            ));
-          }).toList()),
-      Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          ListTile(
-              title: Row(
-            children: <Widget>[
-              const Text('WDITH = ',
-                  style: const TextStyle(fontFamily: 'monospace')),
-              DropdownButton<String>(
-                  value: "One",
-                  onChanged: (String newValue) {
-                    setState(() {
-                      //dropdown1Value = newValue;
-                    });
-                  },
-                  items: <String>['One', 'Two', 'Free', 'Four']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  iconSize: 0,
-                  style: TextStyle(
-                      color: Colors.red,
-                      //fontWeight: FontWeight.bold,
-                      fontSize: 16.0)),
-              const Text('// test'),
-            ],
-          )),
-          ListTile(
-              title: Row(
-            children: <Widget>[
-              const Text('WDITH = ',
-                  style: const TextStyle(fontFamily: 'monospace')),
-              DropdownButton<String>(
-                value: "One",
-                onChanged: (String newValue) {
-                  setState(() {
-                    //dropdown1Value = newValue;
-                  });
-                },
-                items: <String>['One', 'Two', 'Free', 'Four']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                iconSize: 0,
-              ),
-              const Text('// test'),
-            ],
-          )),
-          ListTile(
-              title: const Text('Simple dropdown:'),
-              trailing: DropdownButton<String>(
-                value: "One",
-                onChanged: (String newValue) {
-                  setState(() {
-                    //dropdown1Value = newValue;
-                  });
-                },
-                items: <String>['One', 'Two', 'Free', 'Four']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ))
-        ],
-      ),
-      const Icon(Icons.directions_transit),
-    ];
-    _scaffoldKey.currentState
-        .showBottomSheet<void>((BuildContext context) {
-          return Container(
-              height: 300,
-              child: DefaultTabController(
-                length: 3,
-                child: Scaffold(
-                  appBar: TabBar(
-                    tabs: tabBars,
-                    labelColor: Colors.blue,
-                  ),
-                  body: TabBarView(
-                    children: tabViews,
-                  ),
-                ),
-              ));
-        })
-        .closed
-        .whenComplete(() {
-          if (mounted) {
-            setState(() {
-              // re-enable the button
-              _showBottomSheetCallback = _showBottomSheet;
-            });
-          }
-        });
+  void onChangeTab() {
+    if (!lines.isEmpty) {
+      circle.lines = lines[_tabController.index];
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(title: Text(widget.title), actions: <Widget>[
-        Builder(builder: (BuildContext context) {
-          return IconButton(
-            icon: const Icon(Icons.refresh, semanticLabel: 'Refresh'),
-            onPressed: () {
-              setState(() {
-                _refresh();
-              });
-            },
-          );
-        })
-      ]),
-      body: SpriteWidget(rootNode),
-      floatingActionButton: _showBottomSheetCallback == null
-          ? null
-          : FloatingActionButton(
-              onPressed: _showBottomSheetCallback,
-              tooltip: 'Code',
-              child: const Icon(Icons.code),
-            ),
+    if (!lines.isEmpty) {
+      circle.lines = lines[_tabController.index];
+    }
+    List<Widget> listViews = lines.isEmpty
+        ? []
+        : lines
+            .map((items) => ListView(
+                padding: EdgeInsets.zero,
+                children: items.map((line) {
+                  return ListTile(
+                      title: Row(
+                    children: line.map((item) {
+                      if (item.options.isEmpty) {
+                        return Text(item.text);
+                      } else {
+                        return DropdownButton<String>(
+                            value: item.text,
+                            onChanged: (String newValue) {
+                              setState(() {
+                                item.text = newValue;
+                              });
+                            },
+                            items: item.options.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            iconSize: 0,
+                            style: TextStyle(
+                                color: Colors.red,
+                                //fontWeight: FontWeight.bold,
+                                fontSize: 16.0));
+                      }
+                    }).toList(),
+                  ));
+                }).toList()))
+            .toList();
+
+    Widget editor = Column(
+      children: <Widget>[
+        Container(
+          color: Theme.of(context).accentColor,
+          child: TabBar(
+              controller: _tabController,
+              isScrollable: true,
+              tabs: ["Comments", "Constants", "Assign", "Loop", "If", "Whole"]
+                  .map((tab) => Tab(text: tab))
+                  .toList()),
+        ),
+        Expanded(
+          child: TabBarView(controller: _tabController, children: listViews),
+        ),
+      ],
     );
+
+    return Scaffold(
+        appBar: AppBar(title: Text(widget.title), actions: <Widget>[
+          Builder(builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.refresh, semanticLabel: 'Refresh'),
+              onPressed: () {
+                setState(() {});
+              },
+            );
+          })
+        ]),
+        body: Column(
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 1.3,
+              child: ClipRect(
+                child: Container(
+                    child: Stack(children: <Widget>[SpriteWidget(_rootNode)])),
+              ),
+            ),
+            Expanded(
+              child: editor,
+            ),
+          ],
+        ));
   }
 }
 
 class RedCircle extends Node {
   RedCircle(this.radius);
+  List<List<Line>> lines = [];
 
   double radius;
 
   @override
   void paint(Canvas canvas) {
+    if (!lines.isEmpty) {
+      radius = double.parse(findLine("radius").text);
+    }
     canvas.drawCircle(
         Offset.zero, radius, Paint()..color = const Color(0xffff0000));
+  }
+
+  Line findLine(String key) {
+    return lines
+        .expand((l) => l)
+        .toList()
+        .firstWhere((line) => line.key == key);
   }
 }
 
 class Line {
-  List<LineItem> items;
-
-  Line({this.items});
-
-  factory Line.fromJson(Map<String, dynamic> json) {
-    List items = json['items'];
-    return Line(
-        items: items.map((dynamic item) => LineItem.fromJson(item)).toList());
-  }
-}
-
-class LineItem {
   String text;
+  String key;
   List<String> options;
 
-  LineItem({this.text, this.options});
+  Line({this.text, this.key, this.options});
 
-  factory LineItem.fromJson(Map<String, dynamic> json) {
+  factory Line.fromJson(Map<String, dynamic> json) {
     List options = json['options'];
-    return LineItem(
+    return Line(
         text: json['text'].toString(),
+        key: json['key'].toString(),
         options: options.map((dynamic option) => option.toString()).toList());
   }
 }
