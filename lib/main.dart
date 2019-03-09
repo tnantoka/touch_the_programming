@@ -122,7 +122,7 @@ class _MyWidgetState extends State<MyWidget>
           child: TabBar(
               controller: _tabController,
               isScrollable: true,
-              tabs: ["Comments", "Constants", "Assign", "Loop", "If", "Whole"]
+              tabs: ["Comments", "Constants", "Object", "Loop", "If", "Whole"]
                   .map((tab) => Tab(text: tab))
                   .toList()),
         ),
@@ -137,9 +137,7 @@ class _MyWidgetState extends State<MyWidget>
           Builder(builder: (BuildContext context) {
             return IconButton(
               icon: const Icon(Icons.refresh, semanticLabel: 'Refresh'),
-              onPressed: () {
-                setState(() {});
-              },
+              onPressed: circle.reset,
             );
           })
         ]),
@@ -165,11 +163,47 @@ class RedCircle extends Node {
   List<List<Line>> lines = [];
 
   double radius;
+  double vx = 0;
+
+  @override
+  void update(double dt) {
+    position = Offset(position.dx + vx * dt * 10, 512.0);
+
+    super.update(dt);
+  }
+
+  void reset() {
+    position = Offset(512.0, 512.0);
+    vx = 0;
+    radius = 100;
+  }
 
   @override
   void paint(Canvas canvas) {
     if (!lines.isEmpty) {
-      radius = double.parse(findLine("radius").text);
+      if (findLine("radius") != null) {
+        radius = double.parse(findLine("radius").text);
+      } else {
+        radius = 100;
+      }
+
+      if (findLine("x") != null) {
+        position = Offset(512.0 + double.parse(findLine("x").text), 512.0);
+      }
+
+      if (findLine("vx") != null) {
+        vx = double.parse(findLine("vx").text);
+      } else {
+        vx = 0;
+      }
+
+      if (findLine("if-x-cond") != null) {
+        vx = 10;
+        if (position.dx > 512.0 + double.parse(findLine("if-x-cond").text)) {
+          position =
+              Offset(512.0 + double.parse(findLine("if-x-val").text), 512.0);
+        }
+      }
     }
     canvas.drawCircle(
         Offset.zero, radius, Paint()..color = const Color(0xffff0000));
@@ -179,7 +213,7 @@ class RedCircle extends Node {
     return lines
         .expand((l) => l)
         .toList()
-        .firstWhere((line) => line.key == key);
+        .firstWhere((line) => line.key == key, orElse: () => null);
   }
 }
 

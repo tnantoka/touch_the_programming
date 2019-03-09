@@ -2,20 +2,24 @@
   [
     [
       {
-        "text": "RADIUS = ",
+        "text": "/*",
         "options": []
-      },
+      }
+    ],
+    [
       {
-        "text": "100",
-        "options": [
-          "50",
-          "100",
-          "150"
-        ],
-        "key": "radius"
+        "text": "Hello world",
+        "options": []
+      }
+    ],
+    [
+      {
+        "text": "*/",
+        "options": []
       }
     ]
   ],
+
   [
     [
       {
@@ -33,74 +37,98 @@
       }
     ]
   ],
+
   [
     [
       {
-        "text": "RADIUS = ",
+        "text": "circle.x = ",
+        "options": []
+      },
+      {
+        "text": "0",
+        "options": [
+          "0",
+          "50",
+          "100",
+          "150"
+        ],
+        "key": "x"
+      }
+    ]
+  ],
+
+  [
+    [
+      {
+        "text": "loop {",
+        "options": []
+      }
+    ],
+    [
+      {
+        "text": "  circle.x += ",
+        "options": []
+      },
+      {
+        "text": "1",
+        "options": [
+          "1",
+          "5",
+          "10"
+        ],
+        "key": "vx"
+      }
+    ],
+    [
+      {
+        "text": "}",
+        "options": []
+      }
+    ]
+  ],
+
+  [
+    [
+      {
+        "text": "if (x > ",
         "options": []
       },
       {
         "text": "100",
         "options": [
-          "50",
           "100",
-          "150"
+          "200",
+          "300"
         ],
-        "key": "radius"
+        "key": "if-x-cond"
+      },
+      {
+        "text": ") {",
+        "options": []
       }
-    ]
-  ],
-  [
+    ],
     [
       {
-        "text": "RADIUS = ",
+        "text": "  circle.x = ",
         "options": []
       },
       {
-        "text": "100",
+        "text": "0",
         "options": [
-          "50",
-          "100",
-          "150"
+          "0",
+          "-100"
         ],
-        "key": "radius"
+        "key": "if-x-val"
       }
-    ]
-  ],
-  [
+    ],
     [
       {
-        "text": "RADIUS = ",
+        "text": "}",
         "options": []
-      },
-      {
-        "text": "100",
-        "options": [
-          "50",
-          "100",
-          "150"
-        ],
-        "key": "radius"
       }
     ]
   ],
-  [
-    [
-      {
-        "text": "RADIUS = ",
-        "options": []
-      },
-      {
-        "text": "100",
-        "options": [
-          "50",
-          "100",
-          "150"
-        ],
-        "key": "radius"
-      }
-    ]
-  ],
+
   [
     [
       {
