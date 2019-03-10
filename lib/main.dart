@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:spritewidget/spritewidget.dart';
+import "dart:math";
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -47,7 +48,7 @@ class _MyWidgetState extends State<MyWidget>
     circle.position = const Offset(512.0, 512.0);
     _rootNode.addChild(circle);
 
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
     _tabController.index = 0;
     _tabController.addListener(onChangeTab);
 
@@ -122,7 +123,7 @@ class _MyWidgetState extends State<MyWidget>
           child: TabBar(
               controller: _tabController,
               isScrollable: true,
-              tabs: ["Comments", "Constants", "Object", "Loop", "If", "Whole"]
+              tabs: ["Comments", "Assignment", "While", "If", "Wrap-up"]
                   .map((tab) => Tab(text: tab))
                   .toList()),
         ),
@@ -164,56 +165,74 @@ class RedCircle extends Node {
 
   double radius;
   double vx = 0;
-
-  @override
-  void update(double dt) {
-    position = Offset(position.dx + vx * dt * 10, 512.0);
-
-    super.update(dt);
-  }
+  double vy = 0;
+  Color color = Colors.red;
+  final Random _random = Random();
 
   void reset() {
     position = Offset(512.0, 512.0);
     vx = 0;
+    vy = 0;
     radius = 100;
+    color = Colors.red;
+  }
+
+  @override
+  void update(double dt) {
+    position = Offset(position.dx + vx * dt, position.dy + vy * dt);
+
+    super.update(dt);
   }
 
   @override
   void paint(Canvas canvas) {
     if (!lines.isEmpty) {
       if (findLine("radius") != null) {
-        radius = double.parse(findLine("radius").text);
+        radius = double.parse(findLine("radius"));
       } else {
         radius = 100;
       }
 
       if (findLine("x") != null) {
-        position = Offset(512.0 + double.parse(findLine("x").text), 512.0);
+        position = Offset(512.0 + double.parse(findLine("x")), position.dy);
+      }
+      if (findLine("y") != null) {
+        position = Offset(position.dx, 512.0 + double.parse(findLine("y")));
       }
 
       if (findLine("vx") != null) {
-        vx = double.parse(findLine("vx").text);
+        vx = double.parse(findLine("vx")) * 100;
       } else {
         vx = 0;
       }
+      if (findLine("vy") != null) {
+        vy = double.parse(findLine("vy")) * 100;
+      } else {
+        vy = 0;
+      }
 
       if (findLine("if-x-cond") != null) {
-        vx = 10;
-        if (position.dx > 512.0 + double.parse(findLine("if-x-cond").text)) {
-          position =
-              Offset(512.0 + double.parse(findLine("if-x-val").text), 512.0);
+        vx = 100;
+        if (position.dx > 512.0 + double.parse(findLine("if-x-cond"))) {
+          position = Offset(512.0 + double.parse(findLine("if-x-val")), 512.0);
         }
       }
+
+      if (findLine("color") != null) {
+        color = Color(int.parse(findLine("color"), radix: 16) + 0xFF000000);
+      } else {
+        color = Colors.red;
+      }
     }
-    canvas.drawCircle(
-        Offset.zero, radius, Paint()..color = const Color(0xffff0000));
+    canvas.drawCircle(Offset.zero, radius, Paint()..color = color);
   }
 
-  Line findLine(String key) {
+  String findLine(String key) {
     return lines
         .expand((l) => l)
         .toList()
-        .firstWhere((line) => line.key == key, orElse: () => null);
+        .firstWhere((line) => line.key == key, orElse: () => null)
+        ?.text;
   }
 }
 

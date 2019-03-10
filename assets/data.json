@@ -23,7 +23,7 @@
   [
     [
       {
-        "text": "RADIUS = ",
+        "text": "radius = ",
         "options": []
       },
       {
@@ -35,13 +35,25 @@
         ],
         "key": "radius"
       }
-    ]
-  ],
-
-  [
+    ],
     [
       {
-        "text": "circle.x = ",
+        "text": "color = ",
+        "options": []
+      },
+      {
+        "text": "ff0000",
+        "options": [
+          "ff0000",
+          "00ff00",
+          "0000ff"
+        ],
+        "key": "color"
+      }
+    ],
+    [
+      {
+        "text": "x = ",
         "options": []
       },
       {
@@ -54,29 +66,62 @@
         ],
         "key": "x"
       }
+    ],
+    [
+      {
+        "text": "y = ",
+        "options": []
+      },
+      {
+        "text": "0",
+        "options": [
+          "0",
+          "50",
+          "100",
+          "150"
+        ],
+        "key": "y"
+      }
     ]
   ],
 
   [
     [
       {
-        "text": "loop {",
+        "text": "while(true) {",
         "options": []
       }
     ],
     [
       {
-        "text": "  circle.x += ",
+        "text": "  x += ",
         "options": []
       },
       {
         "text": "1",
         "options": [
+          "0",
           "1",
           "5",
           "10"
         ],
         "key": "vx"
+      }
+    ],
+    [
+      {
+        "text": "  y += ",
+        "options": []
+      },
+      {
+        "text": "0",
+        "options": [
+          "0",
+          "1",
+          "5",
+          "10"
+        ],
+        "key": "vy"
       }
     ],
     [
@@ -109,7 +154,7 @@
     ],
     [
       {
-        "text": "  circle.x = ",
+        "text": "  x = ",
         "options": []
       },
       {
