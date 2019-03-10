@@ -175,6 +175,7 @@ class RedCircle extends Node {
     vy = 0;
     radius = 100;
     color = Colors.red;
+    lines.expand((l) => l).toList().forEach((l) => l.randomValue = null);
   }
 
   @override
@@ -214,7 +215,8 @@ class RedCircle extends Node {
       if (findLine("if-x-cond") != null) {
         vx = 100;
         if (position.dx > 512.0 + double.parse(findLine("if-x-cond"))) {
-          position = Offset(512.0 + double.parse(findLine("if-x-val")), 512.0);
+          position = Offset(512.0 + double.parse(findLine("if-x-val")),
+              512.0 + double.parse(findLine("if-y-val", reset: true)));
         }
       }
 
@@ -227,27 +229,41 @@ class RedCircle extends Node {
     canvas.drawCircle(Offset.zero, radius, Paint()..color = color);
   }
 
-  String findLine(String key) {
-    return lines
+  String findLine(String key, {bool reset = false}) {
+    Line line = lines
         .expand((l) => l)
         .toList()
-        .firstWhere((line) => line.key == key, orElse: () => null)
-        ?.text;
+        .firstWhere((line) => line.key == key, orElse: () => null);
+    if (line?.text == "random") {
+      if (line.randomValue == null) {
+        String value = line.random[_random.nextInt(line.random.length)];
+        if (reset) {
+          return value;
+        }
+        line.randomValue = value;
+      }
+      return line.randomValue;
+    }
+    return line?.text;
   }
 }
 
 class Line {
   String text;
   String key;
+  String randomValue;
   List<String> options;
+  List<String> random;
 
-  Line({this.text, this.key, this.options});
+  Line({this.text, this.key, this.options, this.random});
 
   factory Line.fromJson(Map<String, dynamic> json) {
     List options = json['options'];
+    List random = json['random'];
     return Line(
         text: json['text'].toString(),
         key: json['key'].toString(),
-        options: options.map((dynamic option) => option.toString()).toList());
+        options: options.map((dynamic option) => option.toString()).toList(),
+        random: random.map((dynamic random) => random.toString()).toList());
   }
 }

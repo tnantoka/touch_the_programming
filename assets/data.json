@@ -3,18 +3,21 @@
     [
       {
         "text": "/*",
+        "random": [],
         "options": []
       }
     ],
     [
       {
         "text": "Hello world",
+        "random": [],
         "options": []
       }
     ],
     [
       {
         "text": "*/",
+        "random": [],
         "options": []
       }
     ]
@@ -24,14 +27,24 @@
     [
       {
         "text": "radius = ",
+        "random": [],
         "options": []
       },
       {
         "text": "100",
+        "random": [
+          "10",
+          "50",
+          "100",
+          "150",
+          "200",
+          "250"
+        ],
         "options": [
           "50",
           "100",
-          "150"
+          "150",
+          "random"
         ],
         "key": "radius"
       }
@@ -39,10 +52,12 @@
     [
       {
         "text": "color = ",
+        "random": [],
         "options": []
       },
       {
         "text": "ff0000",
+        "random": [],
         "options": [
           "ff0000",
           "00ff00",
@@ -54,10 +69,12 @@
     [
       {
         "text": "x = ",
+        "random": [],
         "options": []
       },
       {
         "text": "0",
+        "random": [],
         "options": [
           "0",
           "50",
@@ -70,10 +87,12 @@
     [
       {
         "text": "y = ",
+        "random": [],
         "options": []
       },
       {
         "text": "0",
+        "random": [],
         "options": [
           "0",
           "50",
@@ -89,16 +108,19 @@
     [
       {
         "text": "while(true) {",
+        "random": [],
         "options": []
       }
     ],
     [
       {
         "text": "  x += ",
+        "random": [],
         "options": []
       },
       {
         "text": "1",
+        "random": [],
         "options": [
           "0",
           "1",
@@ -111,10 +133,12 @@
     [
       {
         "text": "  y += ",
+        "random": [],
         "options": []
       },
       {
         "text": "0",
+        "random": [],
         "options": [
           "0",
           "1",
@@ -127,6 +151,7 @@
     [
       {
         "text": "}",
+        "random": [],
         "options": []
       }
     ]
@@ -136,10 +161,12 @@
     [
       {
         "text": "if (x > ",
+        "random": [],
         "options": []
       },
       {
         "text": "100",
+        "random": [],
         "options": [
           "100",
           "200",
@@ -149,26 +176,55 @@
       },
       {
         "text": ") {",
+        "random": [],
         "options": []
       }
     ],
     [
       {
         "text": "  x = ",
+        "random": [],
         "options": []
       },
       {
         "text": "0",
+        "random": [],
         "options": [
           "0",
           "-100"
         ],
         "key": "if-x-val"
       }
+    ],    [
+      {
+        "text": "  y = ",
+        "random": [],
+        "options": []
+      },
+      {
+        "text": "0",
+        "random": [
+          "10",
+          "50",
+          "100",
+          "150",
+          "-10",
+          "-50",
+          "-100",
+          "-150"
+        ],
+        "options": [
+          "0",
+          "-100",
+          "random"
+        ],
+        "key": "if-y-val"
+      }
     ],
     [
       {
         "text": "}",
+        "random": [],
         "options": []
       }
     ]
@@ -178,10 +234,12 @@
     [
       {
         "text": "RADIUS = ",
+        "random": [],
         "options": []
       },
       {
         "text": "100",
+        "random": [],
         "options": [
           "50",
           "100",
