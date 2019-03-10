@@ -1,269 +1,183 @@
+import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:convert';
 import 'package:spritewidget/spritewidget.dart';
-import "dart:math";
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp(new MyApp());
-  });
+      .then((_) => runApp(App()));
 }
 
-class MyApp extends StatelessWidget {
+var title = 'Touch the Programming';
+var _rand = Random();
+
+class App extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Touch the Programming',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyWidget(title: 'Touch the Programming'),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        title: title,
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: Page(),
+      );
 }
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+class Page extends StatefulWidget {
   @override
-  _MyWidgetState createState() => _MyWidgetState();
+  _State createState() => _State();
 }
 
-class _MyWidgetState extends State<MyWidget>
-    with SingleTickerProviderStateMixin {
-  List<List<List<Line>>> lines = [];
-  NodeWithSize _rootNode;
-  TabController _tabController;
-  RedCircle circle;
+class _State extends State<Page> with SingleTickerProviderStateMixin {
+  List<List<List<Code>>> data = [
+    [[]]
+  ];
+  var _root = NodeWithSize(Size(1024, 1024));
+  var _shape = Shape();
+  var menu = ['Comments', 'Assignment', 'While', 'If', 'Wrap-up']
+      .map((m) => Tab(text: m))
+      .toList();
+  TabController _tabCon;
 
   @override
   void initState() {
     super.initState();
-    _rootNode = NodeWithSize(const Size(1024.0, 1024.0));
-    circle = RedCircle(100.0);
-    circle.position = const Offset(512.0, 512.0);
-    _rootNode.addChild(circle);
-
-    _tabController = TabController(length: 5, vsync: this);
-    _tabController.index = 0;
-    _tabController.addListener(onChangeTab);
-
-    _loadJson();
-  }
-
-  void _loadJson() async {
-    String data = await rootBundle.loadString("assets/data.json");
-    List tabs = json.decode(data);
-    setState(() {
-      lines = tabs.map((dynamic tab) {
-        List lines = tab;
-        return lines.map((dynamic line) {
-          List items = line;
-          return items.map((dynamic item) => Line.fromJson(item)).toList();
+    _root.addChild(_shape);
+    _tabCon = TabController(length: 5, vsync: this)..addListener(_syncTab);
+    rootBundle.loadString('assets/data.json').then((d) {
+      setState(() {
+        data = (json.decode(d) as List).map((t) {
+          return (t as List).map((l) {
+            return (l as List).map((c) => Code.fromJson(c)).toList();
+          }).toList();
         }).toList();
-      }).toList();
+      });
     });
-  }
-
-  void onChangeTab() {
-    if (!lines.isEmpty) {
-      circle.lines = lines[_tabController.index];
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!lines.isEmpty) {
-      circle.lines = lines[_tabController.index];
-    }
-    List<Widget> listViews = lines.isEmpty
-        ? []
-        : lines
-            .map((items) => ListView(
-                padding: EdgeInsets.zero,
-                children: items.map((line) {
-                  return ListTile(
-                      title: Row(
-                    children: line.map((item) {
-                      if (item.options.isEmpty) {
-                        return Text(item.text);
-                      } else {
-                        return DropdownButton<String>(
-                            value: item.text,
-                            onChanged: (String newValue) {
-                              setState(() {
-                                item.text = newValue;
-                              });
-                            },
-                            items: item.options.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                            iconSize: 0,
-                            style: TextStyle(
-                                color: Colors.red,
-                                //fontWeight: FontWeight.bold,
-                                fontSize: 16.0));
-                      }
-                    }).toList(),
-                  ));
-                }).toList()))
-            .toList();
-
-    Widget editor = Column(
-      children: <Widget>[
+    _syncTab();
+    var tabViews = data.map((t) {
+      return ListView(
+          padding: EdgeInsets.zero,
+          children: t.map((l) {
+            return ListTile(
+                title: Row(children: l.map((c) => _codeSpan(c)).toList()));
+          }).toList());
+    }).toList();
+    var editor = Column(
+      children: [
         Container(
-          color: Theme.of(context).accentColor,
-          child: TabBar(
-              controller: _tabController,
-              isScrollable: true,
-              tabs: ["Comments", "Assignment", "While", "If", "Wrap-up"]
-                  .map((tab) => Tab(text: tab))
-                  .toList()),
+          color: Colors.blue,
+          child: TabBar(controller: _tabCon, isScrollable: true, tabs: menu),
         ),
-        Expanded(
-          child: TabBarView(controller: _tabController, children: listViews),
-        ),
+        Expanded(child: TabBarView(controller: _tabCon, children: tabViews)),
       ],
     );
-
     return Scaffold(
-        appBar: AppBar(title: Text(widget.title), actions: <Widget>[
-          Builder(builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.refresh, semanticLabel: 'Refresh'),
-              onPressed: circle.reset,
-            );
-          })
+        appBar: AppBar(title: Text(title), actions: [
+          IconButton(icon: Icon(Icons.refresh), onPressed: _shape.reset)
         ]),
         body: Column(
-          children: <Widget>[
-            AspectRatio(
-              aspectRatio: 1.3,
-              child: ClipRect(
-                child: Container(
-                    child: Stack(children: <Widget>[SpriteWidget(_rootNode)])),
-              ),
-            ),
-            Expanded(
-              child: editor,
-            ),
+          children: [
+            AspectRatio(aspectRatio: 1.3, child: SpriteWidget(_root)),
+            Expanded(child: editor),
           ],
         ));
   }
+
+  void _syncTab() => _shape.tab = data[_tabCon.index].expand((l) => l).toList();
+  Widget _codeSpan(Code code) {
+    if (code.opts.isEmpty) {
+      return Text(code.val);
+    }
+    return DropdownButton(
+        value: code.val,
+        onChanged: (val) => setState(() => code.val = val),
+        items: code.opts
+            .map((o) => DropdownMenuItem(value: o, child: Text(o)))
+            .toList(),
+        iconSize: 0,
+        style: TextStyle(color: Colors.red, fontSize: 16));
+  }
 }
 
-class RedCircle extends Node {
-  RedCircle(this.radius);
-  List<List<Line>> lines = [];
+class Shape extends Node {
+  Shape() {
+    reset();
+  }
 
-  double radius;
-  double vx = 0;
-  double vy = 0;
-  Color color = Colors.red;
-  final Random _random = Random();
+  var tab = <Code>[];
+  double r, vx, vy;
 
   void reset() {
-    position = Offset(512.0, 512.0);
-    vx = 0;
-    vy = 0;
-    radius = 100;
-    color = Colors.red;
-    lines.expand((l) => l).toList().forEach((l) => l.randomValue = null);
+    _setPos(0, 0);
+    vx = vy = 0;
+    r = 100;
+    tab.forEach((c) => c.cache = null);
   }
 
   @override
   void update(double dt) {
     position = Offset(position.dx + vx * dt, position.dy + vy * dt);
-
     super.update(dt);
   }
 
   @override
   void paint(Canvas canvas) {
-    if (!lines.isEmpty) {
-      if (findLine("radius") != null) {
-        radius = double.parse(findLine("radius"));
-      } else {
-        radius = 100;
-      }
+    if (code('x') != null) {
+      _setPos(parse('x'), 0);
+    }
+    if (code('y') != null) {
+      _setPos(0, parse('y'));
+    }
 
-      if (findLine("x") != null) {
-        position = Offset(512.0 + double.parse(findLine("x")), position.dy);
-      }
-      if (findLine("y") != null) {
-        position = Offset(position.dx, 512.0 + double.parse(findLine("y")));
-      }
+    vx = code('vx') != null ? parse('vx') * 100 : 0;
+    vy = code('vy') != null ? parse('vy') * 100 : 0;
 
-      if (findLine("vx") != null) {
-        vx = double.parse(findLine("vx")) * 100;
-      } else {
-        vx = 0;
-      }
-      if (findLine("vy") != null) {
-        vy = double.parse(findLine("vy")) * 100;
-      } else {
-        vy = 0;
-      }
-
-      if (findLine("if-x-cond") != null) {
-        vx = 100;
-        if (position.dx > 512.0 + double.parse(findLine("if-x-cond"))) {
-          position = Offset(512.0 + double.parse(findLine("if-x-val")),
-              512.0 + double.parse(findLine("if-y-val", reset: true)));
-        }
-      }
-
-      if (findLine("color") != null) {
-        color = Color(int.parse(findLine("color"), radix: 16) + 0xFF000000);
-      } else {
-        color = Colors.red;
+    if (code('if-x-cond') != null) {
+      vx = 100;
+      if (position.dx > 512 + parse('if-x-cond')) {
+        _setPos(parse('if-x-val'), parse('if-y-val'));
       }
     }
-    canvas.drawCircle(Offset.zero, radius, Paint()..color = color);
+
+    r = code('r') != null ? parse('r') : 100;
+    var color = code('color') != null
+        ? Color(int.parse(code('color'), radix: 16) + 0xFF000000)
+        : Colors.red;
+
+    canvas.drawCircle(Offset.zero, r, Paint()..color = color);
   }
 
-  String findLine(String key, {bool reset = false}) {
-    Line line = lines
-        .expand((l) => l)
-        .toList()
-        .firstWhere((line) => line.key == key, orElse: () => null);
-    if (line?.text == "random") {
-      if (line.randomValue == null) {
-        String value = line.random[_random.nextInt(line.random.length)];
-        if (reset) {
-          return value;
-        }
-        line.randomValue = value;
-      }
-      return line.randomValue;
+  void _setPos(double x, double y) => position = Offset(512 + x, 512 + y);
+  double parse(String id) => double.parse(code(id));
+  String code(String id) {
+    var code = tab.firstWhere((c) => c.id == id, orElse: () => null);
+    if (code?.val != 'Random') {
+      return code?.val;
     }
-    return line?.text;
+    if (code.cache != null) {
+      return code.cache;
+    }
+    var i = _rand.nextInt(code.opts.length - 1);
+    var val = code.opts.where((o) => o != 'Random').toList()[i];
+    if (!code.noCache) {
+      code.cache = val;
+    }
+    return val;
   }
 }
 
-class Line {
-  String text;
-  String key;
-  String randomValue;
-  List<String> options;
-  List<String> random;
+class Code {
+  Code({this.val, this.id, this.opts, this.noCache});
 
-  Line({this.text, this.key, this.options, this.random});
+  String val, id, cache;
+  List<String> opts;
+  bool noCache;
 
-  factory Line.fromJson(Map<String, dynamic> json) {
-    List options = json['options'];
-    List random = json['random'];
-    return Line(
-        text: json['text'].toString(),
-        key: json['key'].toString(),
-        options: options.map((dynamic option) => option.toString()).toList(),
-        random: random.map((dynamic random) => random.toString()).toList());
-  }
+  factory Code.fromJson(Map<String, dynamic> json) => Code(
+      val: json['val'],
+      id: json['id'],
+      noCache: json['noCache'] != null,
+      opts: (json['opts'] as List).cast<String>());
 }
