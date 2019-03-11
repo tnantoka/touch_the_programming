@@ -143,8 +143,8 @@ class Shape extends Node {
 
     r = _val('r') != null ? _dbl('r') : 100;
     [
-      [_col(_val('fill')), PaintingStyle.fill],
-      [_col(_val('stroke')), PaintingStyle.stroke]
+      [_col('fill'), PaintingStyle.fill],
+      [_col('str'), PaintingStyle.stroke]
     ].forEach((l) {
       canvas.drawCircle(
           Offset.zero,
@@ -156,8 +156,8 @@ class Shape extends Node {
   }
 
   void _setPos(double x, double y) => position = Offset(512 + x, 512 + y);
-  Color _col(String v) => v != null
-      ? Color(int.parse(v, radix: 16) + 0xFF000000).withOpacity(_dbl('opacity'))
+  Color _col(String id) => _val(id) != null
+      ? Color(int.parse(_val(id), radix: 16)).withOpacity(_dbl('${id}opa'))
       : Colors.red;
   double _dbl(String id) => double.parse(_val(id));
   String _val(String id) {

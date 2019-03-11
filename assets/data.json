@@ -74,12 +74,12 @@
           "Random"
         ],
         "noCache": false,
-        "id": "stroke"
+        "id": "str"
       }
     ],
     [
       {
-        "val": "opacity = ",
+        "val": "fillOpacity = ",
         "opts": []
       },
       {
@@ -90,10 +90,31 @@
           "0.5",
           "0.3",
           "0.1",
+          "0.0",
           "Random"
         ],
         "noCache": false,
-        "id": "opacity"
+        "id": "fillopa"
+      }
+    ],
+    [
+      {
+        "val": "strokeOpacity = ",
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "opts": [
+          "1.0",
+          "0.7",
+          "0.5",
+          "0.3",
+          "0.1",
+          "0.0",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "stropa"
       }
     ],
     [
