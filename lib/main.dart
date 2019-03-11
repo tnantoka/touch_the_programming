@@ -16,7 +16,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: title,
-        theme: ThemeData(primarySwatch: Colors.blue),
+        theme: ThemeData(primaryColor: Colors.white),
         home: Page(),
       );
 }
@@ -67,13 +67,14 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
     var editor = Column(
       children: [
         Container(
-          color: Colors.blue,
+          color: Colors.grey[50],
           child: TabBar(controller: _tabCon, isScrollable: true, tabs: menu),
         ),
         Expanded(child: TabBarView(controller: _tabCon, children: tabViews)),
       ],
     );
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(title: Text(title), actions: [
           IconButton(icon: Icon(Icons.refresh), onPressed: _shape.reset)
         ]),
