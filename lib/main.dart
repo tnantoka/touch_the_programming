@@ -60,8 +60,10 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
       return ListView(
           padding: EdgeInsets.zero,
           children: t.map((l) {
-            return ListTile(
-                title: Row(children: l.map((c) => _codeSpan(c)).toList()));
+            return Container(
+                height: 30,
+                padding: EdgeInsets.only(left: 10),
+                child: Row(children: l.map((c) => _codeSpan(c)).toList()));
           }).toList());
     }).toList();
     var editor = Column(
