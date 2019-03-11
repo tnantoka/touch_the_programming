@@ -124,55 +124,44 @@ class Shape extends Node {
 
   @override
   void paint(Canvas canvas) {
-    if (code('x') != null) {
-      _setPos(parse('x'), 0);
+    if (_val('x') != null) {
+      _setPos(_dbl('x'), 0);
     }
-    if (code('y') != null) {
-      _setPos(0, parse('y'));
+    if (_val('y') != null) {
+      _setPos(0, _dbl('y'));
     }
 
-    vx = code('vx') != null ? parse('vx') * 100 : 0;
-    vy = code('vy') != null ? parse('vy') * 100 : 0;
+    vx = _val('vx') != null ? _dbl('vx') * 100 : 0;
+    vy = _val('vy') != null ? _dbl('vy') * 100 : 0;
 
-    if (code('if1') != null) {
+    if (_val('if1') != null) {
       vx = 100;
-      if (position.dx > 512 + parse('if1')) {
-        _setPos(parse('if1x'), parse('if1y'));
+      if (position.dx > 512 + _dbl('if1')) {
+        _setPos(_dbl('if1x'), _dbl('if1y'));
       }
     }
 
-    r = code('r') != null ? parse('r') : 100;
+    r = _val('r') != null ? _dbl('r') : 100;
     [
-      [color(code('fill')), PaintingStyle.fill],
-      [color(code('stroke')), PaintingStyle.stroke]
-    ].forEach((p) {
+      [_col(_val('fill')), PaintingStyle.fill],
+      [_col(_val('stroke')), PaintingStyle.stroke]
+    ].forEach((l) {
       canvas.drawCircle(
           Offset.zero,
           r,
           Paint()
-            ..color = p[0]
-            ..style = p[1]);
+            ..color = l[0]
+            ..style = l[1]);
     });
   }
 
   void _setPos(double x, double y) => position = Offset(512 + x, 512 + y);
-  Color color(String val) =>
-      val != null ? Color(int.parse(val, radix: 16)) : Colors.red;
-  double parse(String id) => double.parse(code(id));
-  String code(String id) {
-    var code = tab.firstWhere((c) => c.id == id, orElse: () => null);
-    if (code?.val != 'Random') {
-      return code?.val;
-    }
-    if (code.cache != null) {
-      return code.cache;
-    }
-    var i = _rand.nextInt(code.opts.length - 1);
-    var val = code.opts.where((o) => o != 'Random').toList()[i];
-    if (!code.noCache) {
-      code.cache = val;
-    }
-    return val;
+  Color _col(String v) => v != null
+      ? Color(int.parse(v, radix: 16) + 0xFF000000).withOpacity(_dbl('opacity'))
+      : Colors.red;
+  double _dbl(String id) => double.parse(_val(id));
+  String _val(String id) {
+    return tab.firstWhere((c) => c.id == id, orElse: () => null)?.parse();
   }
 }
 
@@ -188,4 +177,16 @@ class Code {
       id: json['id'],
       noCache: json['noCache'],
       opts: (json['opts'] as List).cast<String>());
+
+  String parse() {
+    if (val != 'Random') {
+      return val;
+    }
+    if (cache != null) {
+      return cache;
+    }
+    var i = _rand.nextInt(opts.length - 1);
+    var _cache = opts.where((o) => o != 'Random').toList()[i];
+    return noCache ? _cache : cache = _cache;
+  }
 }

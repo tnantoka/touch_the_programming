@@ -47,12 +47,12 @@
         "opts": []
       },
       {
-        "val": "ffff0000",
+        "val": "ff0000",
         "opts": [
-          "ffff0000",
-          "ff00ff00",
-          "ff0000ff",
-          "00000000",
+          "ff0000",
+          "00ff00",
+          "0000ff",
+          "000000",
           "Random"
         ],
         "noCache": false,
@@ -65,16 +65,35 @@
         "opts": []
       },
       {
-        "val": "ff00ff00",
+        "val": "00ff00",
         "opts": [
-          "ffff0000",
-          "ff00ff00",
-          "ff0000ff",
-          "00000000",
+          "ff0000",
+          "00ff00",
+          "0000ff",
+          "000000",
           "Random"
         ],
         "noCache": false,
         "id": "stroke"
+      }
+    ],
+    [
+      {
+        "val": "opacity = ",
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "opts": [
+          "1.0",
+          "0.7",
+          "0.5",
+          "0.3",
+          "0.1",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "opacity"
       }
     ],
     [
