@@ -87,9 +87,7 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
 
   void _syncTab() => _shape.tab = data[_tabCon.index].expand((l) => l).toList();
   Widget _codeSpan(Code code) {
-    if (code.opts.isEmpty) {
-      return Text(code.val);
-    }
+    if (code.opts.isEmpty) return Text(code.val);
     return DropdownButton(
         value: code.val,
         onChanged: (val) => setState(() => code.val = val),
@@ -107,12 +105,11 @@ class Shape extends Node {
   }
 
   var tab = <Code>[];
-  double r, vx, vy;
+  double vx, vy;
 
   void reset() {
     _setPos(0, 0);
     vx = vy = 0;
-    r = 100;
     tab.forEach((c) => c.cache = null);
   }
 
@@ -124,31 +121,24 @@ class Shape extends Node {
 
   @override
   void paint(Canvas canvas) {
-    if (_val('x') != null) {
-      _setPos(_dbl('x'), 0);
-    }
-    if (_val('y') != null) {
-      _setPos(0, _dbl('y'));
-    }
+    if (_val('x') != null) _setPos(_dbl('x'), 0);
+    if (_val('y') != null) _setPos(0, _dbl('y'));
 
     vx = _val('vx') != null ? _dbl('vx') * 100 : 0;
     vy = _val('vy') != null ? _dbl('vy') * 100 : 0;
 
     if (_val('if1') != null) {
       vx = 100;
-      if (position.dx > 512 + _dbl('if1')) {
-        _setPos(_dbl('if1x'), _dbl('if1y'));
-      }
+      if (position.dx > 512 + _dbl('if1')) _setPos(_dbl('if1x'), _dbl('if1y'));
     }
 
-    r = _val('r') != null ? _dbl('r') : 100;
     [
       [_col('fill'), PaintingStyle.fill],
       [_col('str'), PaintingStyle.stroke]
     ].forEach((l) {
       canvas.drawCircle(
           Offset.zero,
-          r,
+          _val('r') != null ? _dbl('r') : 100.0,
           Paint()
             ..color = l[0]
             ..style = l[1]);
@@ -158,7 +148,7 @@ class Shape extends Node {
   void _setPos(double x, double y) => position = Offset(512 + x, 512 + y);
   Color _col(String id) => _val(id) != null
       ? Color(int.parse(_val(id), radix: 16)).withOpacity(_dbl('${id}opa'))
-      : Colors.red;
+      : Colors.grey;
   double _dbl(String id) => double.parse(_val(id));
   String _val(String id) {
     return tab.firstWhere((c) => c.id == id, orElse: () => null)?.parse();
@@ -179,12 +169,8 @@ class Code {
       opts: (json['opts'] as List).cast<String>());
 
   String parse() {
-    if (val != 'Random') {
-      return val;
-    }
-    if (cache != null) {
-      return cache;
-    }
+    if (val != 'Random') return val;
+    if (cache != null) return cache;
     var i = _rand.nextInt(opts.length - 1);
     var _cache = opts.where((o) => o != 'Random').toList()[i];
     return noCache ? _cache : cache = _cache;
