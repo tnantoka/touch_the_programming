@@ -134,22 +134,30 @@ class Shape extends Node {
     vx = code('vx') != null ? parse('vx') * 100 : 0;
     vy = code('vy') != null ? parse('vy') * 100 : 0;
 
-    if (code('if-x-cond') != null) {
+    if (code('if1') != null) {
       vx = 100;
-      if (position.dx > 512 + parse('if-x-cond')) {
-        _setPos(parse('if-x-val'), parse('if-y-val'));
+      if (position.dx > 512 + parse('if1')) {
+        _setPos(parse('if1x'), parse('if1y'));
       }
     }
 
     r = code('r') != null ? parse('r') : 100;
-    var color = code('color') != null
-        ? Color(int.parse(code('color'), radix: 16) + 0xFF000000)
-        : Colors.red;
-
-    canvas.drawCircle(Offset.zero, r, Paint()..color = color);
+    [
+      [color(code('fill')), PaintingStyle.fill],
+      [color(code('stroke')), PaintingStyle.stroke]
+    ].forEach((p) {
+      canvas.drawCircle(
+          Offset.zero,
+          r,
+          Paint()
+            ..color = p[0]
+            ..style = p[1]);
+    });
   }
 
   void _setPos(double x, double y) => position = Offset(512 + x, 512 + y);
+  Color color(String val) =>
+      val != null ? Color(int.parse(val, radix: 16)) : Colors.red;
   double parse(String id) => double.parse(code(id));
   String code(String id) {
     var code = tab.firstWhere((c) => c.id == id, orElse: () => null);
@@ -178,6 +186,6 @@ class Code {
   factory Code.fromJson(Map<String, dynamic> json) => Code(
       val: json['val'],
       id: json['id'],
-      noCache: json['noCache'] != null,
+      noCache: json['noCache'],
       opts: (json['opts'] as List).cast<String>());
 }

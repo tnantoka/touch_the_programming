@@ -35,24 +35,46 @@
           "150",
           "200",
           "250",
-          "random"
+          "Random"
         ],
+        "noCache": false,
         "id": "r"
       }
     ],
     [
       {
-        "val": "color = ",
+        "val": "fillColor = ",
         "opts": []
       },
       {
-        "val": "ff0000",
+        "val": "ffff0000",
         "opts": [
-          "ff0000",
-          "00ff00",
-          "0000ff"
+          "ffff0000",
+          "ff00ff00",
+          "ff0000ff",
+          "00000000",
+          "Random"
         ],
-        "id": "color"
+        "noCache": false,
+        "id": "fill"
+      }
+    ],
+    [
+      {
+        "val": "strokeColor = ",
+        "opts": []
+      },
+      {
+        "val": "ff00ff00",
+        "opts": [
+          "ffff0000",
+          "ff00ff00",
+          "ff0000ff",
+          "00000000",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "stroke"
       }
     ],
     [
@@ -149,7 +171,7 @@
           "200",
           "300"
         ],
-        "id": "if-x-cond"
+        "id": "if1"
       },
       {
         "val": ") {",
@@ -167,7 +189,7 @@
           "0",
           "-100"
         ],
-        "id": "if-x-val"
+        "id": "if1x"
       }
     ],    [
       {
@@ -186,10 +208,10 @@
           "-50",
           "-100",
           "-150",
-          "random"
+          "Random"
         ],
         "noCache": true,
-        "id": "if-y-val"
+        "id": "if1y"
       }
     ],
     [
