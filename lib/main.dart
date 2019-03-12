@@ -31,7 +31,7 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
     [[]]
   ];
   var _root = NodeWithSize(Size(1024, 1024));
-  var _shape = Shape();
+  var _shapes = [Shape()];
   var menu = ['Comments', 'Assign', 'Loop', 'If', 'Wrap-up']
       .map((m) => Tab(text: m))
       .toList();
@@ -40,7 +40,7 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _root.addChild(_shape);
+    _root.addChild(_shapes[0]);
     _tabCon = TabController(length: 5, vsync: this)..addListener(_syncTab);
     rootBundle.loadString('assets/data.json').then((d) {
       setState(() {
@@ -80,7 +80,7 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(title: Text(title), elevation: 0, actions: [
-          IconButton(icon: Icon(Icons.refresh), onPressed: _shape.reset)
+          IconButton(icon: Icon(Icons.refresh), onPressed: _resetShapes)
         ]),
         body: Column(
           children: [
@@ -90,7 +90,28 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
         ));
   }
 
-  void _syncTab() => _shape.tab = data[_tabCon.index].expand((l) => l).toList();
+  void _resetShapes() {
+    _shapes.forEach((s) => s.reset());
+    _syncTab();
+  }
+
+  void _syncTab() {
+    var tab = data[_tabCon.index].expand((l) => l).toList();
+    var num = _shapes[0]
+        .tab
+        .firstWhere((c) => c.id == 'num', orElse: () => null)
+        ?.parse();
+    var n = num != null ? int.parse(num) : 1;
+    for (var i = _root.children.length - n; i > 0; i--) {
+      _root.children.removeLast().removeFromParent();
+    }
+    for (var i = n - _root.children.length; i > 0; i--) {
+      _shapes.add(Shape());
+      _root.addChild(_shapes.last);
+    }
+    _shapes.forEach((s) => s.tab = tab.map((c) => c.clone()).toList());
+  }
+
   Widget _codeSpan(Code code) {
     if (code.opts.isEmpty) return Text(code.val);
     return DropdownButton(
@@ -126,8 +147,7 @@ class Shape extends Node {
 
   @override
   void paint(Canvas canvas) {
-    if (_val('x') != null) _setPos(_dbl('x'), 0);
-    if (_val('y') != null) _setPos(0, _dbl('y'));
+    if (_val('x') != null && _val('y') != null) _setPos(_dbl('x'), _dbl('y'));
 
     vx = _val('vx') != null ? _dbl('vx') * 100 : 0;
     vy = _val('vy') != null ? _dbl('vy') * 100 : 0;
@@ -155,9 +175,8 @@ class Shape extends Node {
       ? Color(int.parse(_val(id), radix: 16)).withOpacity(_dbl('${id}opa'))
       : Colors.grey;
   double _dbl(String id) => double.parse(_val(id));
-  String _val(String id) {
-    return tab.firstWhere((c) => c.id == id, orElse: () => null)?.parse();
-  }
+  String _val(String id) =>
+      tab.firstWhere((c) => c.id == id, orElse: () => null)?.parse();
 }
 
 class Code {
@@ -172,6 +191,7 @@ class Code {
       id: json['id'],
       noCache: json['noCache'],
       opts: (json['opts'] as List).cast<String>());
+  Code clone() => Code(val: val, id: id, noCache: noCache, opts: opts);
 
   String parse() {
     if (val != 'Random') return val;
