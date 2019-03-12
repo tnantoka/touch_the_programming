@@ -16,7 +16,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: title,
-        theme: ThemeData(primaryColor: Colors.white),
+        theme: ThemeData(primaryColor: Colors.grey[50]),
         home: Page(),
       );
 }
@@ -32,7 +32,7 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
   ];
   var _root = NodeWithSize(Size(1024, 1024));
   var _shape = Shape();
-  var menu = ['Comments', 'Assignment', 'While', 'If', 'Wrap-up']
+  var menu = ['Comments', 'Assign', 'Loop', 'If', 'Wrap-up']
       .map((m) => Tab(text: m))
       .toList();
   TabController _tabCon;
@@ -66,18 +66,20 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
                 child: Row(children: l.map((c) => _codeSpan(c)).toList()));
           }).toList());
     }).toList();
+    var tabBar = TabBar(
+        controller: _tabCon,
+        isScrollable: true,
+        tabs: menu,
+        indicatorColor: Colors.black);
     var editor = Column(
       children: [
-        Container(
-          color: Colors.grey[50],
-          child: TabBar(controller: _tabCon, isScrollable: true, tabs: menu),
-        ),
+        Container(color: Colors.grey[50], child: tabBar),
         Expanded(child: TabBarView(controller: _tabCon, children: tabViews)),
       ],
     );
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(title: Text(title), actions: [
+        appBar: AppBar(title: Text(title), elevation: 0, actions: [
           IconButton(icon: Icon(Icons.refresh), onPressed: _shape.reset)
         ]),
         body: Column(
