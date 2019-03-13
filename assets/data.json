@@ -302,6 +302,58 @@
         "val": "}",
         "opts": []
       }
+    ],
+    [
+      {
+        "val": "line = ",
+        "opts": []
+      },
+      {
+        "val": "true",
+        "opts": [
+          "true",
+          "false"
+        ],
+        "id": "l"
+      }
+    ],
+    [
+      {
+        "val": "strokeColor = ",
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "opts": [
+          "000000",
+          "ff0000",
+          "00ff00",
+          "0000ff",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "str"
+      }
+    ],
+    [
+      {
+        "val": "strokeOpacity = ",
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "opts": [
+          "1.0",
+          "0.7",
+          "0.5",
+          "0.3",
+          "0.1",
+          "0.0",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "stropa"
+      }
     ]
   ],
 
