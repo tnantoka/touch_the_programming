@@ -87,16 +87,21 @@ class Player extends NodeWithSize {
     shapes = [];
     tabs = [];
     removeAllChildren();
-    for (var i = 0; i < n; i++) {
-      this.i = i;
+    for (var j = 0; j < n; j++) {
+      i = j;
       tabs.add(toL(tab.map((c) => c.clone())));
       shapes.add(Offset(256 + _dbl('x'), 256 + _dbl('y')));
     }
   }
 
   paint(var c) {
-    i = (i + 1) % n;
+    for (var j = 0; j < n; j++) {
+      i = j;
+      _paint(c);
+    }
+  }
 
+  _paint(var c) {
     if (_val('ifx') != null) {
       if (shapes[i].dx > 256 + _dbl('ifx'))
         shapes[i] = Offset(256 + _dbl('ifxx'), shapes[i].dy);
@@ -110,17 +115,31 @@ class Player extends NodeWithSize {
     if (_val('l') == 'true') {
       addChild(Dot()
         ..position = shapes[i]
-        ..color = _col('line'));
+        ..col = _col('line')
+        ..w = _dbl('linew'));
     }
 
     [
-      ['fill', PaintingStyle.fill],
-      ['str', PaintingStyle.stroke]
+      ['fill', 0],
+      ['str', 1]
     ].forEach((l) {
       var p = Paint()
         ..color = _col(l[0])
-        ..style = l[1];
-      c.drawCircle(shapes[i], _dbl('r', or: 50), p);
+        ..style = PaintingStyle.values[l[1]]
+        ..strokeWidth = _dbl('strw');
+      var r = _dbl('r', or: 50);
+      var rect = Rect.fromCircle(center: shapes[i], radius: r);
+      switch (_val('shape')) {
+        case 'r':
+          c.drawRect(rect, p);
+          break;
+        case 'rr':
+          c.drawRRect(
+              RRect.fromRectAndRadius(rect, Radius.circular(r * 0.1)), p);
+          break;
+        default:
+          c.drawCircle(shapes[i], r, p);
+      }
     });
   }
 
@@ -133,8 +152,8 @@ class Player extends NodeWithSize {
 }
 
 class Dot extends Node {
-  var color;
-  paint(var c) => c.drawCircle(Offset.zero, 1, Paint()..color = color);
+  var col, w;
+  paint(var c) => c.drawCircle(Offset.zero, w, Paint()..color = col);
 }
 
 class Code {

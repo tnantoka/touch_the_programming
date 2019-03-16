@@ -173,6 +173,23 @@
     ],
     [
       {
+        "val": "strokeWidth = ",
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "opts": [
+          "1.0",
+          "2.0",
+          "3.0",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "strw"
+      }
+    ],
+    [
+      {
         "val": "x = ",
         "opts": []
       },
@@ -519,6 +536,40 @@
         ],
         "noCache": false,
         "id": "lineopa"
+      }
+    ],
+    [
+      {
+        "val": "strokeWidth = ",
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "opts": [
+          "1.0",
+          "2.0",
+          "3.0",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "strw"
+      }
+    ],
+    [
+      {
+        "val": "lineWidth = ",
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "opts": [
+          "1.0",
+          "2.0",
+          "3.0",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "linew"
       }
     ]
   ],
