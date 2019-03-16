@@ -83,20 +83,18 @@ class Player extends NodeWithSize {
   int n, i;
   List nodes, tabs;
   init(var tab) {
-    n = find(tab, 'num') != null ? int.parse(find(tab, 'num')) : 1;
+    n = find(tab, 'n') != null ? int.parse(find(tab, 'n')) : 1;
     nodes = [];
     tabs = [];
     removeAllChildren();
-    for (var j = 0; j < n; j++) {
-      i = j;
+    for (i = 0; i < n; i++) {
       tabs.add(toL(tab.map((c) => c.clone())));
       nodes.add(Offset(256 + _dbl('x'), 256 + _dbl('y')));
     }
   }
 
   paint(var c) {
-    for (var j = 0; j < n; j++) {
-      i = j;
+    for (i = 0; i < n; i++) {
       _paint(c);
     }
   }
