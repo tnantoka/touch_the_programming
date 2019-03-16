@@ -10,7 +10,7 @@ main() {
 }
 
 var title = 'Touch the Programming';
-var _rand = Random();
+var rand = Random();
 
 class App extends StatelessWidget {
   build(var _) {
@@ -80,17 +80,17 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
 
 class Player extends NodeWithSize {
   Player(var s) : super(s);
-  int n, i = 0;
-  List shapes, tabs;
+  int n, i;
+  List nodes, tabs;
   init(var tab) {
     n = find(tab, 'num') != null ? int.parse(find(tab, 'num')) : 1;
-    shapes = [];
+    nodes = [];
     tabs = [];
     removeAllChildren();
     for (var j = 0; j < n; j++) {
       i = j;
       tabs.add(toL(tab.map((c) => c.clone())));
-      shapes.add(Offset(256 + _dbl('x'), 256 + _dbl('y')));
+      nodes.add(Offset(256 + _dbl('x'), 256 + _dbl('y')));
     }
   }
 
@@ -103,22 +103,21 @@ class Player extends NodeWithSize {
 
   _paint(var c) {
     if (_val('ifx') != null) {
-      if (shapes[i].dx > 256 + _dbl('ifx'))
-        shapes[i] = Offset(256 + _dbl('ifxx'), shapes[i].dy);
+      if (nodes[i].dx > 256 + _dbl('ifx'))
+        nodes[i] = Offset(256 + _dbl('ifxx'), nodes[i].dy);
     }
     if (_val('ify') != null) {
-      if (shapes[i].dy > 256 + _dbl('ify'))
-        shapes[i] = Offset(shapes[i].dx, 256 + _dbl('ifyy'));
+      if (nodes[i].dy > 256 + _dbl('ify'))
+        nodes[i] = Offset(nodes[i].dx, 256 + _dbl('ifyy'));
     }
-    shapes[i] = Offset(shapes[i].dx + _dbl('vx'), shapes[i].dy + _dbl('vy'));
+    nodes[i] = Offset(nodes[i].dx + _dbl('vx'), nodes[i].dy + _dbl('vy'));
 
     if (_val('l') == 'true') {
       addChild(Dot()
-        ..position = shapes[i]
+        ..position = nodes[i]
         ..col = _col('line')
         ..w = _dbl('linew'));
     }
-
     [
       ['fill', 0],
       ['str', 1]
@@ -128,18 +127,9 @@ class Player extends NodeWithSize {
         ..style = PaintingStyle.values[l[1]]
         ..strokeWidth = _dbl('strw');
       var r = _dbl('r', or: 50);
-      var rect = Rect.fromCircle(center: shapes[i], radius: r);
-      switch (_val('shape')) {
-        case 'r':
-          c.drawRect(rect, p);
-          break;
-        case 'rr':
-          c.drawRRect(
-              RRect.fromRectAndRadius(rect, Radius.circular(r * 0.1)), p);
-          break;
-        default:
-          c.drawCircle(shapes[i], r, p);
-      }
+      _val('sh') == 'Rect'
+          ? c.drawRect(Rect.fromCircle(center: nodes[i], radius: r), p)
+          : c.drawCircle(nodes[i], r, p);
     });
   }
 
@@ -169,9 +159,9 @@ class Code {
   parse() {
     if (val != 'Random') return val;
     if (cache != null) return cache;
-    var i = _rand.nextInt(opts.length - 1);
-    var _cache = toL(opts.where((o) => o != 'Random'))[i];
-    return noCache ? _cache : cache = _cache;
+    var i = rand.nextInt(opts.length - 1);
+    var c = toL(opts.where((o) => o != 'Random'))[i];
+    return noCache ? c : cache = c;
   }
 }
 

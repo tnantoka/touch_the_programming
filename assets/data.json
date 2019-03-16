@@ -59,6 +59,22 @@
     ],
     [
       {
+        "val": "shape = ",
+        "opts": []
+      },
+      {
+        "val": "Circle",
+        "opts": [
+          "Circle",
+          "Rect",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "sh"
+      }
+    ],
+    [
+      {
         "val": "fillColor = ",
         "opts": []
       },
