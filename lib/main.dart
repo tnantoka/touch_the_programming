@@ -68,7 +68,7 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
 
   _syncTab() => player.init(toL(data[_tabCon.index].expand((l) => l)));
   _codeSpan(Code c) => c.opts.isEmpty
-      ? Text(c.val)
+      ? Text(c.hide ? '' : c.val)
       : DropdownButton(
           value: c.val,
           onChanged: (v) => setState(() => c.val = v),
@@ -145,15 +145,16 @@ class Dot extends Node {
 }
 
 class Code {
-  Code({this.val, this.id, this.opts, this.noCache});
-  var val, id, cache, noCache;
+  Code({this.val, this.id, this.opts, this.noCache, this.hide});
+  var val, id, cache, noCache, hide;
   List opts;
   factory Code.fromJson(var json) => Code(
       val: json['val'],
       id: json['id'],
       noCache: json['noCache'],
+      hide: json['hide'],
       opts: (json['opts'] as List).cast<String>());
-  clone() => Code(val: val, id: id, noCache: noCache, opts: opts);
+  clone() => Code(val: val, id: id, noCache: noCache, hide: hide, opts: opts);
   parse() {
     if (val != 'Random') return val;
     if (cache != null) return cache;

@@ -3,18 +3,21 @@
     [
       {
         "val": "/*",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "Hello world",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "*/",
+        "hide": false,
         "opts": []
       }
     ]
@@ -24,14 +27,17 @@
     [
       {
         "val": "numbers = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1",
+        "hide": false,
         "opts": [
-          "1",
-          "3",
-          "5"
+          "1", "3", "5", "7", "9",
+          "11", "13", "15", "17", "19",
+          "21", "23", "25", "27", "29",
+          "Random"
         ],
         "noCache": false,
         "id": "n"
@@ -40,10 +46,12 @@
     [
       {
         "val": "radius = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "50",
+        "hide": false,
         "opts": [
           "10",
           "50",
@@ -60,10 +68,12 @@
     [
       {
         "val": "shape = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "Circle",
+        "hide": false,
         "opts": [
           "Circle",
           "Rect",
@@ -76,10 +86,12 @@
     [
       {
         "val": "fillColor = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "000000",
+        "hide": false,
         "opts": [
           "000000",
           "ff0000",
@@ -94,10 +106,12 @@
     [
       {
         "val": "strokeColor = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "000000",
+        "hide": false,
         "opts": [
           "000000",
           "ff0000",
@@ -112,10 +126,12 @@
     [
       {
         "val": "lineColor = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "000000",
+        "hide": false,
         "opts": [
           "000000",
           "ff0000",
@@ -130,10 +146,12 @@
     [
       {
         "val": "fillOpacity = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "0.1",
+        "hide": false,
         "opts": [
           "1.0",
           "0.7",
@@ -150,10 +168,12 @@
     [
       {
         "val": "strokeOpacity = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1.0",
+        "hide": false,
         "opts": [
           "1.0",
           "0.7",
@@ -170,10 +190,12 @@
     [
       {
         "val": "lineOpacity = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1.0",
+        "hide": false,
         "opts": [
           "1.0",
           "0.7",
@@ -190,10 +212,12 @@
     [
       {
         "val": "strokeWidth = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1.0",
+        "hide": false,
         "opts": [
           "1.0",
           "2.0",
@@ -207,10 +231,12 @@
     [
       {
         "val": "x = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "0",
+        "hide": false,
         "opts": [
           "0",
           "50",
@@ -225,10 +251,12 @@
     [
       {
         "val": "y = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "0",
+        "hide": false,
         "opts": [
           "0",
           "50",
@@ -246,10 +274,12 @@
     [
       {
         "val": "vx = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1",
+        "hide": false,
         "opts": [
           "0",
           "1",
@@ -262,10 +292,12 @@
     [
       {
         "val": "vy = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "0",
+        "hide": false,
         "opts": [
           "0",
           "1",
@@ -278,24 +310,28 @@
     [
       {
         "val": "while(true) {",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "  x += vx",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "  y += vy",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "}",
+        "hide": false,
         "opts": []
       }
     ]
@@ -305,10 +341,12 @@
     [
       {
         "val": "vx = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1",
+        "hide": false,
         "opts": [
           "1",
           "0"
@@ -319,10 +357,12 @@
     [
       {
         "val": "vy = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1",
+        "hide": false,
         "opts": [
           "1",
           "0"
@@ -332,10 +372,12 @@
     ],    [
       {
         "val": "numbers = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1",
+        "hide": false,
         "opts": [
           "1",
           "3",
@@ -351,28 +393,33 @@
     [
       {
         "val": "while(true) {",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "  x += vx",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "  y += vy",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "  if (x > ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "50",
+        "hide": false,
         "opts": [
           "50",
           "100",
@@ -383,16 +430,19 @@
       },
       {
         "val": ") {",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "    x = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "0",
+        "hide": false,
         "opts": [
           "0",
           "-100",
@@ -407,16 +457,19 @@
     [
       {
         "val": "  }",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "  if (y > ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "100",
+        "hide": false,
         "opts": [
           "100",
           "200",
@@ -426,16 +479,19 @@
       },
       {
         "val": ") {",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "    y = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "0",
+        "hide": false,
         "opts": [
           "0",
           "10",
@@ -455,22 +511,26 @@
     [
       {
         "val": "  }",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "}",
+        "hide": false,
         "opts": []
       }
     ],
     [
       {
         "val": "line = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "true",
+        "hide": false,
         "opts": [
           "true",
           "false"
@@ -481,10 +541,12 @@
     [
       {
         "val": "strokeColor = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "000000",
+        "hide": false,
         "opts": [
           "000000",
           "ff0000",
@@ -499,10 +561,12 @@
     [
       {
         "val": "strokeOpacity = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1.0",
+        "hide": false,
         "opts": [
           "1.0",
           "0.7",
@@ -519,10 +583,12 @@
     [
       {
         "val": "lineColor = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "000000",
+        "hide": false,
         "opts": [
           "000000",
           "ff0000",
@@ -537,10 +603,12 @@
     [
       {
         "val": "lineOpacity = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1.0",
+        "hide": false,
         "opts": [
           "1.0",
           "0.7",
@@ -557,10 +625,12 @@
     [
       {
         "val": "strokeWidth = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1.0",
+        "hide": false,
         "opts": [
           "1.0",
           "2.0",
@@ -574,10 +644,12 @@
     [
       {
         "val": "lineWidth = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "1.0",
+        "hide": false,
         "opts": [
           "1.0",
           "2.0",
@@ -594,10 +666,12 @@
     [
       {
         "val": "radius = ",
+        "hide": false,
         "opts": []
       },
       {
         "val": "50",
+        "hide": false,
         "opts": [
           "50",
           "100",
