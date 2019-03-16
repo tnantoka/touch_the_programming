@@ -43,7 +43,7 @@
         "opts": []
       },
       {
-        "val": "100",
+        "val": "50",
         "opts": [
           "10",
           "50",
@@ -95,6 +95,24 @@
     ],
     [
       {
+        "val": "lineColor = ",
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "opts": [
+          "000000",
+          "ff0000",
+          "00ff00",
+          "0000ff",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "line"
+      }
+    ],
+    [
+      {
         "val": "fillOpacity = ",
         "opts": []
       },
@@ -131,6 +149,26 @@
         ],
         "noCache": false,
         "id": "stropa"
+      }
+    ],
+    [
+      {
+        "val": "lineOpacity = ",
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "opts": [
+          "1.0",
+          "0.7",
+          "0.5",
+          "0.3",
+          "0.1",
+          "0.0",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "lineopa"
       }
     ],
     [
@@ -174,13 +212,7 @@
   [
     [
       {
-        "val": "while(true) {",
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "  x += ",
+        "val": "vx = ",
         "opts": []
       },
       {
@@ -196,7 +228,7 @@
     ],
     [
       {
-        "val": "  y += ",
+        "val": "vy = ",
         "opts": []
       },
       {
@@ -212,6 +244,24 @@
     ],
     [
       {
+        "val": "while(true) {",
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  x += vx",
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  y += vy",
+        "opts": []
+      }
+    ],
+    [
+      {
         "val": "}",
         "opts": []
       }
@@ -220,6 +270,33 @@
 
   [
     [
+      {
+        "val": "vx = ",
+        "opts": []
+      },
+      {
+        "val": "1",
+        "opts": [
+          "1",
+          "0"
+        ],
+        "id": "vx"
+      }
+    ],
+    [
+      {
+        "val": "vy = ",
+        "opts": []
+      },
+      {
+        "val": "1",
+        "opts": [
+          "1",
+          "0"
+        ],
+        "id": "vy"
+      }
+    ],    [
       {
         "val": "numbers = ",
         "opts": []
@@ -240,17 +317,36 @@
     ],
     [
       {
-        "val": "if (x > ",
+        "val": "while(true) {",
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  x += vx",
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  y += vy",
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (x > ",
         "opts": []
       },
       {
-        "val": "100",
+        "val": "50",
         "opts": [
+          "50",
           "100",
           "200",
           "300"
         ],
-        "id": "if1"
+        "id": "ifx"
       },
       {
         "val": ") {",
@@ -259,7 +355,7 @@
     ],
     [
       {
-        "val": "  x = ",
+        "val": "    x = ",
         "opts": []
       },
       {
@@ -272,11 +368,37 @@
           "Random"
         ],
         "noCache": true,
-        "id": "if1x"
+        "id": "ifxx"
       }
-    ],    [
+    ],
+    [
       {
-        "val": "  y = ",
+        "val": "  }",
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (y > ",
+        "opts": []
+      },
+      {
+        "val": "100",
+        "opts": [
+          "100",
+          "200",
+          "300"
+        ],
+        "id": "ify"
+      },
+      {
+        "val": ") {",
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    y = ",
         "opts": []
       },
       {
@@ -294,7 +416,13 @@
           "Random"
         ],
         "noCache": true,
-        "id": "if1y"
+        "id": "ifyy"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "opts": []
       }
     ],
     [
@@ -354,6 +482,44 @@
         "noCache": false,
         "id": "stropa"
       }
+    ],
+    [
+      {
+        "val": "lineColor = ",
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "opts": [
+          "000000",
+          "ff0000",
+          "00ff00",
+          "0000ff",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "line"
+      }
+    ],
+    [
+      {
+        "val": "lineOpacity = ",
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "opts": [
+          "1.0",
+          "0.7",
+          "0.5",
+          "0.3",
+          "0.1",
+          "0.0",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "lineopa"
+      }
     ]
   ],
 
@@ -364,7 +530,7 @@
         "opts": []
       },
       {
-        "val": "100",
+        "val": "50",
         "opts": [
           "50",
           "100",
