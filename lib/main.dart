@@ -61,15 +61,16 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
         ]),
         body: Column(
           children: [
-            AspectRatio(aspectRatio: 1.3, child: SpriteWidget(player)),
+            AspectRatio(
+                aspectRatio: 1.3, child: ClipRect(child: SpriteWidget(player))),
             Container(color: Colors.grey[50], child: tabBar),
-            Expanded(child: TabBarView(controller: _tab, children: tabs)),
+            Expanded(child: TabBarView(controller: _tab, children: tabs))
           ],
         ));
   }
 
   _syncTab() => player.init(toL(data[_tab.index].expand((l) => l)));
-  _codeSpan(Code c) => c.opts.isEmpty
+  _codeSpan(Code c) => c.opts.isEmpty || c.hide
       ? Text(c.hide ? '' : c.val)
       : DropdownButton(
           value: c.val,

@@ -7,10 +7,74 @@
         "opts": []
       },
       {
-        "val": "50",
+        "val": "Random",
         "hide": true,
-        "id": "r",
-        "opts": []
+        "opts": [
+          "50",
+          "100",
+          "150",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "r"
+      },
+      {
+        "val": "30",
+        "hide": true,
+        "opts": [],
+        "noCache": false,
+        "id": "n"
+      },
+      {
+        "val": "Random",
+        "hide": true,
+        "opts": [
+          "-250",
+          "-200",
+          "-150",
+          "-100",
+          "-50",
+          "0",
+          "50",
+          "100",
+          "150",
+          "200",
+          "250",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "x"
+      },
+      {
+        "val": "Random",
+        "hide": true,
+        "opts": [
+          "-250",
+          "-200",
+          "-150",
+          "-100",
+          "-50",
+          "0",
+          "50",
+          "100",
+          "150",
+          "200",
+          "250",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "y"
+      },
+      {
+        "val": "Random",
+        "hide": true,
+        "opts": [
+          "Circle",
+          "Rect",
+          "Random"
+        ],
+        "noCache": false,
+        "id": "sh"
       },
       {
         "val": "000000",
@@ -41,6 +105,18 @@
         "hide": true,
         "opts": [],
         "id": "strw"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify"
       },
       {
         "val": "---",
@@ -75,6 +151,18 @@
         "val": "--- Assign ---",
         "hide": true,
         "opts": []
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify"
       },
       {
         "val": "---",
@@ -881,6 +969,18 @@
         "hide": true,
         "opts": [],
         "id": "strw"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify"
       },
       {
         "val": "---",
