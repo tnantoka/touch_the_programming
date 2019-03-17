@@ -83,7 +83,7 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
 
 class Player extends NodeWithSize {
   Player(var s) : super(s);
-  int n, i;
+  int n, i, f;
   List nodes, tabs;
   init(var tab) {
     n = int.parse(find(tab, 'n') ?? '1');
@@ -94,12 +94,14 @@ class Player extends NodeWithSize {
       tabs.add(toL(tab.map((c) => c.clone())));
       nodes.add(Offset(256 + _dbl('x'), 256 + _dbl('y')));
     }
+    f = 0;
   }
 
   paint(var c) {
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n && i * 10 < f; i++) {
       _paint(c);
     }
+    f++;
   }
 
   _paint(var c) {
