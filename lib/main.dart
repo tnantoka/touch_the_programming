@@ -30,11 +30,13 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
   var player = Player(Size(512, 512));
   var menu = toL(
       ['Comments', 'Assign', 'Loop', 'If', 'Wrap-up'].map((m) => Tab(text: m)));
-  var _tabCon;
-  @override
+  var _tab;
   initState() {
     super.initState();
-    _tabCon = TabController(length: 5, vsync: this)..addListener(_syncTab);
+    _tab = TabController(length: 5, vsync: this)
+      ..addListener(() {
+        if (_tab.indexIsChanging) _syncTab();
+      });
     rootBundle.loadString('assets/data.json').then((d) => setState(() => data =
         toL((json.decode(d) as List).map((t) => toL((t as List)
             .map((l) => toL((l as List).map((c) => Code.fromJson(c)))))))));
@@ -48,7 +50,7 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
             padding: EdgeInsets.only(left: 10),
             child: Row(children: toL(l.map((c) => _codeSpan(c))))))))));
     var tabBar = TabBar(
-        controller: _tabCon,
+        controller: _tab,
         isScrollable: true,
         tabs: menu,
         indicatorColor: Colors.black);
@@ -61,12 +63,12 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
           children: [
             AspectRatio(aspectRatio: 1.3, child: SpriteWidget(player)),
             Container(color: Colors.grey[50], child: tabBar),
-            Expanded(child: TabBarView(controller: _tabCon, children: tabs)),
+            Expanded(child: TabBarView(controller: _tab, children: tabs)),
           ],
         ));
   }
 
-  _syncTab() => player.init(toL(data[_tabCon.index].expand((l) => l)));
+  _syncTab() => player.init(toL(data[_tab.index].expand((l) => l)));
   _codeSpan(Code c) => c.opts.isEmpty
       ? Text(c.hide ? '' : c.val)
       : DropdownButton(
@@ -83,7 +85,7 @@ class Player extends NodeWithSize {
   int n, i;
   List nodes, tabs;
   init(var tab) {
-    n = find(tab, 'n') != null ? int.parse(find(tab, 'n')) : 1;
+    n = int.parse(find(tab, 'n') ?? '1');
     nodes = [];
     tabs = [];
     removeAllChildren();
@@ -100,14 +102,10 @@ class Player extends NodeWithSize {
   }
 
   _paint(var c) {
-    if (_val('ifx') != null) {
-      if (nodes[i].dx > 256 + _dbl('ifx'))
-        nodes[i] = Offset(256 + _dbl('ifxx'), nodes[i].dy);
-    }
-    if (_val('ify') != null) {
-      if (nodes[i].dy > 256 + _dbl('ify'))
-        nodes[i] = Offset(nodes[i].dx, 256 + _dbl('ifyy'));
-    }
+    if (nodes[i].dx > 256 + _dbl('ifx'))
+      nodes[i] = Offset(256 + _dbl('ifxx'), nodes[i].dy);
+    if (nodes[i].dy > 256 + _dbl('ify'))
+      nodes[i] = Offset(nodes[i].dx, 256 + _dbl('ifyy'));
     nodes[i] = Offset(nodes[i].dx + _dbl('vx'), nodes[i].dy + _dbl('vy'));
 
     if (_val('l') == 'true') {
@@ -124,7 +122,7 @@ class Player extends NodeWithSize {
         ..color = _col(l[0])
         ..style = PaintingStyle.values[l[1]]
         ..strokeWidth = _dbl('strw');
-      var r = _dbl('r', or: 50);
+      var r = _dbl('r');
       _val('sh') == 'Rect'
           ? c.drawRect(Rect.fromCircle(center: nodes[i], radius: r), p)
           : c.drawCircle(nodes[i], r, p);
@@ -132,11 +130,9 @@ class Player extends NodeWithSize {
   }
 
   _val(var id) => find(tabs[i], id);
-  _dbl(var id, {double or = 0}) =>
-      _val(id) != null ? double.parse(_val(id)) : or;
-  _col(var id) => _val(id) != null
-      ? Color(int.parse(_val(id), radix: 16)).withOpacity(_dbl('${id}opa'))
-      : Colors.grey;
+  _dbl(var id) => double.parse(_val(id) ?? '0');
+  _col(var id) => Color(int.parse(_val(id) ?? '000000', radix: 16))
+      .withOpacity(_dbl('${id}opa'));
 }
 
 class Dot extends Node {

@@ -2,6 +2,52 @@
   [
     [
       {
+        "val": "--- Comments ---",
+        "hide": true,
+        "opts": []
+      },
+      {
+        "val": "50",
+        "hide": true,
+        "id": "r",
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "fill"
+      },
+      {
+        "val": "0.1",
+        "hide": true,
+        "opts": [],
+        "id": "fillopa"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "str"
+      },
+      {
+        "val": "1.0",
+        "hide": true,
+        "opts": [],
+        "id": "stropa"
+      },
+      {
+        "val": "1",
+        "hide": true,
+        "opts": [],
+        "id": "strw"
+      },
+      {
+        "val": "---",
+        "hide": true,
+        "opts": []
+      },
+      {
         "val": "/*",
         "hide": false,
         "opts": []
@@ -25,6 +71,57 @@
 
   [
     [
+      {
+        "val": "--- Assign ---",
+        "hide": true,
+        "opts": []
+      },
+      {
+        "val": "---",
+        "hide": true,
+        "opts": []
+      },
+      {
+        "val": "50",
+        "hide": true,
+        "id": "r",
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "fill"
+      },
+      {
+        "val": "0.1",
+        "hide": true,
+        "opts": [],
+        "id": "fillopa"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "str"
+      },
+      {
+        "val": "1.0",
+        "hide": true,
+        "opts": [],
+        "id": "stropa"
+      },
+      {
+        "val": "1",
+        "hide": true,
+        "opts": [],
+        "id": "strw"
+      },
+      {
+        "val": "---",
+        "hide": true,
+        "opts": []
+      },
       {
         "val": "numbers = ",
         "hide": false,
@@ -273,6 +370,64 @@
   [
     [
       {
+        "val": "--- Loop ---",
+        "hide": true,
+        "opts": []
+      },
+      {
+        "val": "50",
+        "hide": true,
+        "id": "r",
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "fill"
+      },
+      {
+        "val": "0.1",
+        "hide": true,
+        "opts": [],
+        "id": "fillopa"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "str"
+      },
+      {
+        "val": "1.0",
+        "hide": true,
+        "opts": [],
+        "id": "stropa"
+      },
+      {
+        "val": "1",
+        "hide": true,
+        "opts": [],
+        "id": "strw"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify"
+      },
+      {
+        "val": "---",
+        "hide": true,
+        "opts": []
+      },
+      {
         "val": "vx = ",
         "hide": false,
         "opts": []
@@ -339,6 +494,34 @@
 
   [
     [
+      {
+        "val": "--- If ---",
+        "hide": true,
+        "opts": []
+      },
+      {
+        "val": "50",
+        "hide": true,
+        "id": "r",
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "fill"
+      },
+      {
+        "val": "0.1",
+        "hide": true,
+        "opts": [],
+        "id": "fillopa"
+      },
+      {
+        "val": "---",
+        "hide": true,
+        "opts": []
+      },
       {
         "val": "vx = ",
         "hide": false,
@@ -664,6 +847,46 @@
 
   [
     [
+      {
+        "val": "--- Wrap-up ---",
+        "hide": true,
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "fill"
+      },
+      {
+        "val": "0.1",
+        "hide": true,
+        "opts": [],
+        "id": "fillopa"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "str"
+      },
+      {
+        "val": "1.0",
+        "hide": true,
+        "opts": [],
+        "id": "stropa"
+      },
+      {
+        "val": "1",
+        "hide": true,
+        "opts": [],
+        "id": "strw"
+      },
+      {
+        "val": "---",
+        "hide": true,
+        "opts": []
+      },
       {
         "val": "radius = ",
         "hide": false,
