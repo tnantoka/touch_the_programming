@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spritewidget/spritewidget.dart';
+import 'package:flutter_shapes/flutter_shapes.dart';
 
 main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -125,10 +126,11 @@ class Player extends NodeWithSize {
         ..color = _col(l[0])
         ..style = PaintingStyle.values[l[1]]
         ..strokeWidth = _dbl('strw');
-      var r = _dbl('r');
-      _val('sh') == 'Rect'
-          ? c.drawRect(Rect.fromCircle(center: nodes[i], radius: r), p)
-          : c.drawCircle(nodes[i], r, p);
+      var shapes = Shapes(canvas: c)
+        ..radius = _dbl('r')
+        ..paint = p
+        ..center = nodes[i];
+      shapes.draw(_val('sh') ?? 'Circle');
     });
   }
 

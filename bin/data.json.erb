@@ -1,11 +1,70 @@
-
+<%
+require 'json'
+COLORS = %w[
+  000000 F44336 E91E63 FF4081 9C27B0 E040FB 673AB7 7C4DFF 3F51B5 536DFE
+  2196F3 448AFF 03A9F4 40C4FF 00BCD4 18FFFF 009688 64FFDA 4CAF50 69F0AE
+  8BC34A B2FF59 CDDC39 EEFF41 FFEB3B FFFF00 FFC107 FFD740 FF9800 FFAB40
+  FF5722 FF6E40 795548 9E9E9E 607D8B
+  Random
+].to_json
+OFFSETS = %w[
+  -250 -200 -150 -100 -50
+  0
+  50 100 150 200 250
+  Random
+].to_json
+SIZES = %w[
+  50 100 150
+  Random
+].to_json
+NUM = %w[
+  1 3 5 7 9
+  11 13 15 17 19
+  21 23 25 27 29
+  Random
+].to_json
+OPACITY = %w[
+  1.0 0.9 0.7 0.5 0.3 0.1 0.0
+  Random
+].to_json
+LINE_WIDTH = %w[
+  1.0 2.0 3.0
+  Random
+].to_json
+V = %w[
+  0 1 5 10
+].to_json
+SHAPES = %w[
+  Circle Rect RoundedRect Triangle Diamond Pentagon Hexagon Octagon Decagon Dodecagon Heart
+  Star5 Star6 Star7 Star8
+  Random
+].to_json
+LINE = %w[
+  true false
+].to_json
+IF = <<EOD.strip
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify"
+      },
+EOD
+%>
 [
+  <%- # --- Comments --- -%>
   [
     [
       {
         "val": "Random",
         "hide": true,
-        "opts": ["50","100","150","Random"],
+        "opts": <%= SIZES %>,
         "noCache": false,
         "id": "r"
       },
@@ -19,21 +78,21 @@
       {
         "val": "Random",
         "hide": true,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": <%= OFFSETS %>,
         "noCache": false,
         "id": "x"
       },
       {
         "val": "Random",
         "hide": true,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": <%= OFFSETS %>,
         "noCache": false,
         "id": "y"
       },
       {
         "val": "Random",
         "hide": true,
-        "opts": ["Circle","Rect","RoundedRect","Triangle","Diamond","Pentagon","Hexagon","Octagon","Decagon","Dodecagon","Heart","Star5","Star6","Star7","Star8","Random"],
+        "opts": <%= SHAPES %>,
         "noCache": false,
         "id": "sh"
       },
@@ -67,18 +126,8 @@
         "opts": [],
         "id": "strw"
       },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ifx"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ify"
-      },
+      <%= IF %>
+  <%- # --- -%>
       {
         "val": "/*",
         "hide": false,
@@ -101,20 +150,11 @@
     ]
   ],
 
+  <%- # --- Assign --- -%>
   [
     [
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ifx"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ify"
-      },
+      <%= IF %>
+  <%- # --- -%>
       {
         "val": "numbers = ",
         "hide": false,
@@ -123,7 +163,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["1","3","5","7","9","11","13","15","17","19","21","23","25","27","29","Random"],
+        "opts": <%= NUM %>,
         "noCache": false,
         "id": "n"
       }
@@ -137,7 +177,7 @@
       {
         "val": "50",
         "hide": false,
-        "opts": ["50","100","150","Random"],
+        "opts": <%= SIZES %>,
         "noCache": false,
         "id": "r"
       }
@@ -151,7 +191,7 @@
       {
         "val": "Circle",
         "hide": false,
-        "opts": ["Circle","Rect","RoundedRect","Triangle","Diamond","Pentagon","Hexagon","Octagon","Decagon","Dodecagon","Heart","Star5","Star6","Star7","Star8","Random"],
+        "opts": <%= SHAPES %>,
         "noCache": false,
         "id": "sh"
       }
@@ -165,7 +205,7 @@
       {
         "val": "000000",
         "hide": false,
-        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
+        "opts": <%= COLORS %>,
         "noCache": false,
         "id": "fill"
       }
@@ -179,7 +219,7 @@
       {
         "val": "000000",
         "hide": false,
-        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
+        "opts": <%= COLORS %>,
         "noCache": false,
         "id": "str"
       }
@@ -193,7 +233,7 @@
       {
         "val": "000000",
         "hide": false,
-        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
+        "opts": <%= COLORS %>,
         "noCache": false,
         "id": "line"
       }
@@ -207,7 +247,7 @@
       {
         "val": "0.1",
         "hide": false,
-        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
+        "opts": <%= OPACITY %>,
         "noCache": false,
         "id": "fillopa"
       }
@@ -221,7 +261,7 @@
       {
         "val": "0.9",
         "hide": false,
-        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
+        "opts": <%= OPACITY %>,
         "noCache": false,
         "id": "stropa"
       }
@@ -235,7 +275,7 @@
       {
         "val": "0.9",
         "hide": false,
-        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
+        "opts": <%= OPACITY %>,
         "noCache": false,
         "id": "lineopa"
       }
@@ -249,7 +289,7 @@
       {
         "val": "1.0",
         "hide": false,
-        "opts": ["1.0","2.0","3.0","Random"],
+        "opts": <%= LINE_WIDTH %>,
         "noCache": false,
         "id": "strw"
       }
@@ -263,7 +303,7 @@
       {
         "val": "0",
         "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": <%= OFFSETS %>,
         "noCache": false,
         "id": "x"
       }
@@ -277,13 +317,14 @@
       {
         "val": "0",
         "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": <%= OFFSETS %>,
         "noCache": false,
         "id": "y"
       }
     ]
   ],
 
+  <%- # --- Loop --- -%>
   [
     [
       {
@@ -322,18 +363,8 @@
         "opts": [],
         "id": "strw"
       },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ifx"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ify"
-      },
+      <%= IF %>
+  <%- # --- -%>
       {
         "val": "vx = ",
         "hide": false,
@@ -342,7 +373,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["0","1","5","10"],
+        "opts": <%= V %>,
         "noCache": false,
         "id": "vx"
       }
@@ -356,7 +387,7 @@
       {
         "val": "0",
         "hide": false,
-        "opts": ["0","1","5","10"],
+        "opts": <%= V %>,
         "noCache": false,
         "id": "vy"
       }
@@ -391,6 +422,7 @@
     ]
   ],
 
+  <%- # --- If --- -%>
   [
     [
       {
@@ -411,6 +443,7 @@
         "opts": [],
         "id": "fillopa"
       },
+  <%- # --- -%>
       {
         "val": "vx = ",
         "hide": false,
@@ -419,7 +452,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["0","1","5","10"],
+        "opts": <%= V %>,
         "noCache": false,
         "id": "vx"
       }
@@ -433,7 +466,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["0","1","5","10"],
+        "opts": <%= V %>,
         "noCache": false,
         "id": "vy"
       }
@@ -447,7 +480,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["1","3","5","7","9","11","13","15","17","19","21","23","25","27","29","Random"],
+        "opts": <%= NUM %>,
         "noCache": false,
         "id": "n"
       }
@@ -482,7 +515,7 @@
       {
         "val": "50",
         "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": <%= OFFSETS %>,
         "noCache": false,
         "id": "ifx"
       },
@@ -501,7 +534,7 @@
       {
         "val": "0",
         "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": <%= OFFSETS %>,
         "noCache": false,
         "id": "ifxx"
       }
@@ -522,7 +555,7 @@
       {
         "val": "100",
         "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": <%= OFFSETS %>,
         "noCache": false,
         "id": "ify"
       },
@@ -541,7 +574,7 @@
       {
         "val": "0",
         "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": <%= OFFSETS %>,
         "noCache": true,
         "id": "ifyy"
       }
@@ -569,7 +602,7 @@
       {
         "val": "true",
         "hide": false,
-        "opts": ["true","false"],
+        "opts": <%= LINE %>,
         "id": "l"
       }
     ],
@@ -582,7 +615,7 @@
       {
         "val": "000000",
         "hide": false,
-        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
+        "opts": <%= COLORS %>,
         "noCache": false,
         "id": "str"
       }
@@ -596,7 +629,7 @@
       {
         "val": "0.9",
         "hide": false,
-        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
+        "opts": <%= OPACITY %>,
         "noCache": false,
         "id": "stropa"
       }
@@ -610,7 +643,7 @@
       {
         "val": "000000",
         "hide": false,
-        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
+        "opts": <%= COLORS %>,
         "noCache": false,
         "id": "line"
       }
@@ -624,7 +657,7 @@
       {
         "val": "0.9",
         "hide": false,
-        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
+        "opts": <%= OPACITY %>,
         "noCache": false,
         "id": "lineopa"
       }
@@ -638,7 +671,7 @@
       {
         "val": "1.0",
         "hide": false,
-        "opts": ["1.0","2.0","3.0","Random"],
+        "opts": <%= LINE_WIDTH %>,
         "noCache": false,
         "id": "strw"
       }
@@ -652,13 +685,14 @@
       {
         "val": "1.0",
         "hide": false,
-        "opts": ["1.0","2.0","3.0","Random"],
+        "opts": <%= LINE_WIDTH %>,
         "noCache": false,
         "id": "linew"
       }
     ]
   ],
 
+  <%- # --- Wrap-up --- -%>
   [
     [
       {
@@ -691,18 +725,8 @@
         "opts": [],
         "id": "strw"
       },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ifx"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ify"
-      },
+      <%= IF %>
+  <%- # --- -%>
       {
         "val": "radius = ",
         "hide": false,
@@ -711,7 +735,7 @@
       {
         "val": "50",
         "hide": false,
-        "opts": ["50","100","150","Random"],
+        "opts": <%= SIZES %>,
         "id": "r"
       }
     ]
