@@ -14,7 +14,7 @@ var title = 'Touch the Programming';
 var rand = Random();
 
 class App extends StatelessWidget {
-  build(var _) {
+  build(_) {
     var theme = ThemeData(primaryColor: Colors.grey[50]);
     return MaterialApp(title: title, theme: theme, home: Page());
   }
@@ -43,7 +43,7 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
             .map((l) => toL((l as List).map((c) => Code.fromJson(c)))))))));
   }
 
-  build(var _) {
+  build(_) {
     _syncTab();
     var tabs = toL(data.map((t) => ListView(
         children: toL(t.map((l) => Container(
@@ -83,10 +83,10 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
 }
 
 class Player extends NodeWithSize {
-  Player(var s) : super(s);
+  Player(s) : super(s);
   int n, i, f;
   List nodes, tabs;
-  init(var tab) {
+  init(tab) {
     n = int.parse(find(tab, 'n') ?? '1');
     nodes = [];
     tabs = [];
@@ -98,18 +98,21 @@ class Player extends NodeWithSize {
     f = 0;
   }
 
-  paint(var c) {
+  paint(c) {
     for (i = 0; i < n && i * 10 < f; i++) {
       _paint(c);
     }
     f++;
   }
 
-  _paint(var c) {
-    if (nodes[i].dx > 256 + _dbl('ifx'))
-      nodes[i] = Offset(256 + _dbl('ifxx'), nodes[i].dy);
-    if (nodes[i].dy > 256 + _dbl('ify'))
-      nodes[i] = Offset(nodes[i].dx, 256 + _dbl('ifyy'));
+  _paint(c) {
+    [1, 2].forEach((j) {
+      if (nodes[i].dx > 256 + _dbl('ifx$j'))
+        nodes[i] = Offset(256 + _dbl('ifxx$j'), nodes[i].dy);
+      if (nodes[i].dy > 256 + _dbl('ify$j'))
+        nodes[i] = Offset(nodes[i].dx, 256 + _dbl('ifyy$j'));
+    });
+
     nodes[i] = Offset(nodes[i].dx + _dbl('vx'), nodes[i].dy + _dbl('vy'));
 
     if (_val('l') == 'true') {
@@ -134,22 +137,22 @@ class Player extends NodeWithSize {
     });
   }
 
-  _val(var id) => find(tabs[i], id);
-  _dbl(var id) => double.parse(_val(id) ?? '0');
-  _col(var id) => Color(int.parse(_val(id) ?? '000000', radix: 16))
+  _val(id) => find(tabs[i], id);
+  _dbl(id) => double.parse(_val(id) ?? '0');
+  _col(id) => Color(int.parse(_val(id) ?? '000000', radix: 16))
       .withOpacity(_dbl('${id}opa'));
 }
 
 class Dot extends Node {
   var col, w;
-  paint(var c) => c.drawCircle(Offset.zero, w, Paint()..color = col);
+  paint(c) => c.drawCircle(Offset.zero, w, Paint()..color = col);
 }
 
 class Code {
   Code({this.val, this.id, this.opts, this.noCache, this.hide});
   var val, id, cache, noCache, hide;
   List opts;
-  factory Code.fromJson(var json) => Code(
+  factory Code.fromJson(json) => Code(
       val: json['val'],
       id: json['id'],
       noCache: json['noCache'],
@@ -165,6 +168,6 @@ class Code {
   }
 }
 
-find<E>(var tab, id) =>
+find<E>(tab, id) =>
     tab.firstWhere((c) => c.id == id, orElse: () => null)?.parse();
 List<E> toL<E>(Iterable<E> i) => i.toList();

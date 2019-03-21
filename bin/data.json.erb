@@ -42,18 +42,32 @@ SHAPES = %w[
 LINE = %w[
   true false
 ].to_json
-IF = <<EOD.strip
+IF1 = <<EOD.strip
       {
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ifx"
+        "id": "ifx1"
       },
       {
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ify"
+        "id": "ify1"
+      },
+EOD
+IF2 = <<EOD.strip
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
       },
 EOD
 %>
@@ -126,7 +140,8 @@ EOD
         "opts": [],
         "id": "strw"
       },
-      <%= IF %>
+      <%= IF1 %>
+      <%= IF2 %>
   <%- # --- -%>
       {
         "val": "/*",
@@ -153,7 +168,8 @@ EOD
   <%- # --- Assign --- -%>
   [
     [
-      <%= IF %>
+      <%= IF1 %>
+      <%= IF2 %>
   <%- # --- -%>
       {
         "val": "numbers = ",
@@ -363,7 +379,8 @@ EOD
         "opts": [],
         "id": "strw"
       },
-      <%= IF %>
+      <%= IF1 %>
+      <%= IF2 %>
   <%- # --- -%>
       {
         "val": "vx = ",
@@ -443,6 +460,7 @@ EOD
         "opts": [],
         "id": "fillopa"
       },
+      <%= IF2 %>
   <%- # --- -%>
       {
         "val": "vx = ",
@@ -517,7 +535,7 @@ EOD
         "hide": false,
         "opts": <%= OFFSETS %>,
         "noCache": false,
-        "id": "ifx"
+        "id": "ifx1"
       },
       {
         "val": ") {",
@@ -536,7 +554,7 @@ EOD
         "hide": false,
         "opts": <%= OFFSETS %>,
         "noCache": false,
-        "id": "ifxx"
+        "id": "ifxx1"
       }
     ],
     [
@@ -557,7 +575,7 @@ EOD
         "hide": false,
         "opts": <%= OFFSETS %>,
         "noCache": false,
-        "id": "ify"
+        "id": "ify1"
       },
       {
         "val": ") {",
@@ -576,7 +594,7 @@ EOD
         "hide": false,
         "opts": <%= OFFSETS %>,
         "noCache": true,
-        "id": "ifyy"
+        "id": "ifyy1"
       }
     ],
     [
@@ -725,7 +743,8 @@ EOD
         "opts": [],
         "id": "strw"
       },
-      <%= IF %>
+      <%= IF1 %>
+      <%= IF2 %>
   <%- # --- -%>
       {
         "val": "radius = ",

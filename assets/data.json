@@ -71,13 +71,25 @@
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ifx"
+        "id": "ifx1"
       },
       {
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ify"
+        "id": "ify1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
       },
       {
         "val": "/*",
@@ -107,13 +119,25 @@
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ifx"
+        "id": "ifx1"
       },
       {
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ify"
+        "id": "ify1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
       },
       {
         "val": "numbers = ",
@@ -326,13 +350,25 @@
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ifx"
+        "id": "ifx1"
       },
       {
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ify"
+        "id": "ify1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
       },
       {
         "val": "vx = ",
@@ -412,6 +448,18 @@
         "id": "fillopa"
       },
       {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
+      },
+      {
         "val": "vx = ",
         "hide": false,
         "opts": []
@@ -484,7 +532,7 @@
         "hide": false,
         "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
         "noCache": false,
-        "id": "ifx"
+        "id": "ifx1"
       },
       {
         "val": ") {",
@@ -503,7 +551,7 @@
         "hide": false,
         "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
         "noCache": false,
-        "id": "ifxx"
+        "id": "ifxx1"
       }
     ],
     [
@@ -524,7 +572,7 @@
         "hide": false,
         "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
         "noCache": false,
-        "id": "ify"
+        "id": "ify1"
       },
       {
         "val": ") {",
@@ -543,7 +591,7 @@
         "hide": false,
         "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
         "noCache": true,
-        "id": "ifyy"
+        "id": "ifyy1"
       }
     ],
     [
@@ -695,13 +743,25 @@
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ifx"
+        "id": "ifx1"
       },
       {
         "val": "999999999",
         "hide": true,
         "opts": [],
-        "id": "ify"
+        "id": "ify1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
       },
       {
         "val": "radius = ",
