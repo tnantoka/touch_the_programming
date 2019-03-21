@@ -32,7 +32,9 @@ LINE_WIDTH = %w[
   Random
 ].to_json
 V = %w[
-  0 1 5 10
+  -1 -3 -5 -7 -10
+  0
+  1 3 5 7 10
 ].to_json
 SHAPES = %w[
   Circle Rect RoundedRect Triangle Diamond Pentagon Hexagon Octagon Decagon Dodecagon Heart
@@ -42,6 +44,14 @@ SHAPES = %w[
 LINE = %w[
   true false
 ].to_json
+RADIUS = <<EOD.strip
+      {
+        "val": "50",
+        "hide": true,
+        "opts": [],
+        "id": "r"
+      },
+EOD
 IF1 = <<EOD.strip
       {
         "val": "999999999",
@@ -70,46 +80,7 @@ IF2 = <<EOD.strip
         "id": "ify2"
       },
 EOD
-%>
-[
-  <%- # --- Comments --- -%>
-  [
-    [
-      {
-        "val": "Random",
-        "hide": true,
-        "opts": <%= SIZES %>,
-        "noCache": false,
-        "id": "r"
-      },
-      {
-        "val": "30",
-        "hide": true,
-        "opts": [],
-        "noCache": false,
-        "id": "n"
-      },
-      {
-        "val": "Random",
-        "hide": true,
-        "opts": <%= OFFSETS %>,
-        "noCache": false,
-        "id": "x"
-      },
-      {
-        "val": "Random",
-        "hide": true,
-        "opts": <%= OFFSETS %>,
-        "noCache": false,
-        "id": "y"
-      },
-      {
-        "val": "Random",
-        "hide": true,
-        "opts": <%= SHAPES %>,
-        "noCache": false,
-        "id": "sh"
-      },
+FILL = <<EOD.strip
       {
         "val": "000000",
         "hide": true,
@@ -122,6 +93,8 @@ EOD
         "opts": [],
         "id": "fillopa"
       },
+EOD
+STROKE = <<EOD.strip
       {
         "val": "000000",
         "hide": true,
@@ -140,6 +113,15 @@ EOD
         "opts": [],
         "id": "strw"
       },
+EOD
+%>
+[
+  <%- # --- 1. Hello --- -%>
+  [
+    [
+      <%= RADIUS %>
+      <%= FILL %>
+      <%= STROKE %>
       <%= IF1 %>
       <%= IF2 %>
   <%- # --- -%>
@@ -151,7 +133,35 @@ EOD
     ],
     [
       {
-        "val": "Hello world",
+        "val": "Welcome to the programming world!",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "The circle above is not just an image.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "It is drawn by the code.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "In this app, you can program by touch.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "Let's touch the programming!!",
         "hide": false,
         "opts": []
       }
@@ -165,149 +175,79 @@ EOD
     ]
   ],
 
-  <%- # --- Assign --- -%>
+  <%- # --- 2. Comments --- -%>
   [
     [
+      <%= RADIUS %>
       <%= IF1 %>
       <%= IF2 %>
+      <%= FILL %>
+      <%= STROKE %>
   <%- # --- -%>
       {
-        "val": "numbers = ",
+        "val": "/*",
         "hide": false,
         "opts": []
-      },
-      {
-        "val": "1",
-        "hide": false,
-        "opts": <%= NUM %>,
-        "noCache": false,
-        "id": "n"
       }
     ],
     [
       {
-        "val": "radius = ",
+        "val": "The part enclosed by \"/ *\" and \"* /\" is comment.",
         "hide": false,
         "opts": []
-      },
-      {
-        "val": "50",
-        "hide": false,
-        "opts": <%= SIZES %>,
-        "noCache": false,
-        "id": "r"
       }
     ],
     [
       {
-        "val": "shape = ",
+        "val": "It does not run as a program.",
         "hide": false,
         "opts": []
-      },
-      {
-        "val": "Circle",
-        "hide": false,
-        "opts": <%= SHAPES %>,
-        "noCache": false,
-        "id": "sh"
       }
     ],
     [
       {
-        "val": "fillColor = ",
+        "val": "*/",
         "hide": false,
         "opts": []
-      },
+      }
+    ]
+  ],
+
+
+  <%- # --- 3. Position --- -%>
+  [
+    [
+      <%= RADIUS %>
+      <%= IF1 %>
+      <%= IF2 %>
+      <%= FILL %>
+      <%= STROKE %>
+  <%- # --- -%>
       {
-        "val": "000000",
+        "val": "/*",
         "hide": false,
-        "opts": <%= COLORS %>,
-        "noCache": false,
-        "id": "fill"
+        "opts": []
       }
     ],
     [
       {
-        "val": "strokeColor = ",
+        "val": "You can use \"=\" to set the value.",
         "hide": false,
         "opts": []
-      },
-      {
-        "val": "000000",
-        "hide": false,
-        "opts": <%= COLORS %>,
-        "noCache": false,
-        "id": "str"
       }
     ],
     [
       {
-        "val": "lineColor = ",
+        "val": "Let's set the position of X and Y.",
         "hide": false,
         "opts": []
-      },
-      {
-        "val": "000000",
-        "hide": false,
-        "opts": <%= COLORS %>,
-        "noCache": false,
-        "id": "line"
       }
     ],
     [
       {
-        "val": "fillOpacity = ",
+        "val": "*/",
         "hide": false,
         "opts": []
-      },
-      {
-        "val": "0.1",
-        "hide": false,
-        "opts": <%= OPACITY %>,
-        "noCache": false,
-        "id": "fillopa"
-      }
-    ],
-    [
-      {
-        "val": "strokeOpacity = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "0.9",
-        "hide": false,
-        "opts": <%= OPACITY %>,
-        "noCache": false,
-        "id": "stropa"
-      }
-    ],
-    [
-      {
-        "val": "lineOpacity = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "0.9",
-        "hide": false,
-        "opts": <%= OPACITY %>,
-        "noCache": false,
-        "id": "lineopa"
-      }
-    ],
-    [
-      {
-        "val": "strokeWidth = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1.0",
-        "hide": false,
-        "opts": <%= LINE_WIDTH %>,
-        "noCache": false,
-        "id": "strw"
       }
     ],
     [
@@ -336,6 +276,34 @@ EOD
         "opts": <%= OFFSETS %>,
         "noCache": false,
         "id": "y"
+      }
+    ],
+    [
+      {
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "When \"Random\" is selected,",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "the value changes with each refresh.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
+        "hide": false,
+        "opts": []
       }
     ]
   ],
@@ -552,9 +520,9 @@ EOD
       {
         "val": "0",
         "hide": false,
-        "opts": <%= OFFSETS %>,
+        "opts": <%= V %>,
         "noCache": false,
-        "id": "ifxx1"
+        "id": "ifvx1"
       }
     ],
     [
@@ -592,9 +560,9 @@ EOD
       {
         "val": "0",
         "hide": false,
-        "opts": <%= OFFSETS %>,
+        "opts": <%= V %>,
         "noCache": true,
-        "id": "ifyy1"
+        "id": "ifvy1"
       }
     ],
     [

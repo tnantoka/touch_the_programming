@@ -29,12 +29,18 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
     [[]]
   ];
   var player = Player(Size(512, 512));
-  var menu = toL(
-      ['Comments', 'Assign', 'Loop', 'If', 'Wrap-up'].map((m) => Tab(text: m)));
+  var menu = toL([
+    '1. Hello',
+    '2. Comments',
+    '3. Position',
+    'Loop',
+    'If',
+    'Wrap-up'
+  ].map((m) => Tab(text: m)));
   var _tab;
   initState() {
     super.initState();
-    _tab = TabController(length: 5, vsync: this)
+    _tab = TabController(length: 6, vsync: this)
       ..addListener(() {
         if (_tab.indexIsChanging) _syncTab();
       });
@@ -106,18 +112,20 @@ class Player extends NodeWithSize {
   }
 
   _paint(c) {
+    var pos = nodes[i];
+    var vx = _dbl('vx');
+    var vy = _dbl('vy');
+
     [1, 2].forEach((j) {
-      if (nodes[i].dx > 256 + _dbl('ifx$j'))
-        nodes[i] = Offset(256 + _dbl('ifxx$j'), nodes[i].dy);
-      if (nodes[i].dy > 256 + _dbl('ify$j'))
-        nodes[i] = Offset(nodes[i].dx, 256 + _dbl('ifyy$j'));
+      if (pos.dx > 256 + _dbl('ifx$j')) vx = _dbl('ifvx$j');
+      if (pos.dy > 256 + _dbl('ify$j')) vy = _dbl('ifvy$j');
     });
 
-    nodes[i] = Offset(nodes[i].dx + _dbl('vx'), nodes[i].dy + _dbl('vy'));
+    nodes[i] = Offset(pos.dx + vx, pos.dy + vy);
 
     if (_val('l') == 'true') {
       addChild(Dot()
-        ..position = nodes[i]
+        ..position = pos
         ..col = _col('line')
         ..w = _dbl('linew'));
     }
@@ -132,7 +140,7 @@ class Player extends NodeWithSize {
       var shapes = Shapes(canvas: c)
         ..radius = _dbl('r')
         ..paint = p
-        ..center = nodes[i];
+        ..center = pos;
       shapes.draw(_val('sh') ?? 'Circle');
     });
   }

@@ -3,39 +3,10 @@
   [
     [
       {
-        "val": "Random",
-        "hide": true,
-        "opts": ["50","100","150","Random"],
-        "noCache": false,
-        "id": "r"
-      },
-      {
-        "val": "30",
+        "val": "50",
         "hide": true,
         "opts": [],
-        "noCache": false,
-        "id": "n"
-      },
-      {
-        "val": "Random",
-        "hide": true,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
-        "noCache": false,
-        "id": "x"
-      },
-      {
-        "val": "Random",
-        "hide": true,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
-        "noCache": false,
-        "id": "y"
-      },
-      {
-        "val": "Random",
-        "hide": true,
-        "opts": ["Circle","Rect","RoundedRect","Triangle","Diamond","Pentagon","Hexagon","Octagon","Decagon","Dodecagon","Heart","Star5","Star6","Star7","Star8","Random"],
-        "noCache": false,
-        "id": "sh"
+        "id": "r"
       },
       {
         "val": "000000",
@@ -99,7 +70,35 @@
     ],
     [
       {
-        "val": "Hello world",
+        "val": "Welcome to the programming world!",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "The circle above is not just an image.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "It is drawn by the code.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "In this app, you can program by touch.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "Let's touch the programming!!",
         "hide": false,
         "opts": []
       }
@@ -115,6 +114,12 @@
 
   [
     [
+      {
+        "val": "50",
+        "hide": true,
+        "opts": [],
+        "id": "r"
+      },
       {
         "val": "999999999",
         "hide": true,
@@ -140,142 +145,152 @@
         "id": "ify2"
       },
       {
-        "val": "numbers = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1",
-        "hide": false,
-        "opts": ["1","3","5","7","9","11","13","15","17","19","21","23","25","27","29","Random"],
-        "noCache": false,
-        "id": "n"
-      }
-    ],
-    [
-      {
-        "val": "radius = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "50",
-        "hide": false,
-        "opts": ["50","100","150","Random"],
-        "noCache": false,
-        "id": "r"
-      }
-    ],
-    [
-      {
-        "val": "shape = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "Circle",
-        "hide": false,
-        "opts": ["Circle","Rect","RoundedRect","Triangle","Diamond","Pentagon","Hexagon","Octagon","Decagon","Dodecagon","Heart","Star5","Star6","Star7","Star8","Random"],
-        "noCache": false,
-        "id": "sh"
-      }
-    ],
-    [
-      {
-        "val": "fillColor = ",
-        "hide": false,
-        "opts": []
-      },
-      {
         "val": "000000",
-        "hide": false,
-        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
-        "noCache": false,
+        "hide": true,
+        "opts": [],
         "id": "fill"
-      }
-    ],
-    [
-      {
-        "val": "strokeColor = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "000000",
-        "hide": false,
-        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
-        "noCache": false,
-        "id": "str"
-      }
-    ],
-    [
-      {
-        "val": "lineColor = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "000000",
-        "hide": false,
-        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
-        "noCache": false,
-        "id": "line"
-      }
-    ],
-    [
-      {
-        "val": "fillOpacity = ",
-        "hide": false,
-        "opts": []
       },
       {
         "val": "0.1",
-        "hide": false,
-        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
-        "noCache": false,
+        "hide": true,
+        "opts": [],
         "id": "fillopa"
-      }
-    ],
-    [
+      },
       {
-        "val": "strokeOpacity = ",
-        "hide": false,
-        "opts": []
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "str"
       },
       {
         "val": "0.9",
-        "hide": false,
-        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
-        "noCache": false,
+        "hide": true,
+        "opts": [],
         "id": "stropa"
+      },
+      {
+        "val": "1",
+        "hide": true,
+        "opts": [],
+        "id": "strw"
+      },
+      {
+        "val": "/*",
+        "hide": false,
+        "opts": []
       }
     ],
     [
       {
-        "val": "lineOpacity = ",
+        "val": "The part enclosed by \"/ *\" and \"* /\" is comment.",
         "hide": false,
         "opts": []
+      }
+    ],
+    [
+      {
+        "val": "It does not run as a program.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
+        "hide": false,
+        "opts": []
+      }
+    ]
+  ],
+
+
+  [
+    [
+      {
+        "val": "50",
+        "hide": true,
+        "opts": [],
+        "id": "r"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "fill"
+      },
+      {
+        "val": "0.1",
+        "hide": true,
+        "opts": [],
+        "id": "fillopa"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "str"
       },
       {
         "val": "0.9",
+        "hide": true,
+        "opts": [],
+        "id": "stropa"
+      },
+      {
+        "val": "1",
+        "hide": true,
+        "opts": [],
+        "id": "strw"
+      },
+      {
+        "val": "/*",
         "hide": false,
-        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
-        "noCache": false,
-        "id": "lineopa"
+        "opts": []
       }
     ],
     [
       {
-        "val": "strokeWidth = ",
+        "val": "You can use \"=\" to set the value.",
         "hide": false,
         "opts": []
-      },
+      }
+    ],
+    [
       {
-        "val": "1.0",
+        "val": "Let's set the position of X and Y.",
         "hide": false,
-        "opts": ["1.0","2.0","3.0","Random"],
-        "noCache": false,
-        "id": "strw"
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
+        "hide": false,
+        "opts": []
       }
     ],
     [
@@ -304,6 +319,34 @@
         "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
         "noCache": false,
         "id": "y"
+      }
+    ],
+    [
+      {
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "When \"Random\" is selected,",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "the value changes with each refresh.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
+        "hide": false,
+        "opts": []
       }
     ]
   ],
@@ -378,7 +421,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["0","1","5","10"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
         "noCache": false,
         "id": "vx"
       }
@@ -392,7 +435,7 @@
       {
         "val": "0",
         "hide": false,
-        "opts": ["0","1","5","10"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
         "noCache": false,
         "id": "vy"
       }
@@ -467,7 +510,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["0","1","5","10"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
         "noCache": false,
         "id": "vx"
       }
@@ -481,7 +524,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["0","1","5","10"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
         "noCache": false,
         "id": "vy"
       }
@@ -549,9 +592,9 @@
       {
         "val": "0",
         "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
         "noCache": false,
-        "id": "ifxx1"
+        "id": "ifvx1"
       }
     ],
     [
@@ -589,9 +632,9 @@
       {
         "val": "0",
         "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
         "noCache": true,
-        "id": "ifyy1"
+        "id": "ifvy1"
       }
     ],
     [
