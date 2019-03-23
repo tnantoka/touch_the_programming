@@ -114,11 +114,11 @@ class Demo extends NodeWithSize {
     var pos = nodes[i];
 
     [
-      ['ifx', pos.dx],
-      ['ify', pos.dy]
+      ['ifx', pos.dx, 0],
+      ['ify', pos.dy, 1]
     ].forEach((p) {
-      if (p[1] > 256 + _dbl('${p[0]}1')) v[i][0] = _dbl('${p[0]}v1');
-      if (p[1] < 256 + _dbl('${p[0]}2')) v[i][0] = _dbl('${p[0]}v2');
+      if (p[1] > 256 + _dbl('${p[0]}1')) v[i][p[2]] = _dbl('${p[0]}v1');
+      if (p[1] < 256 + _dbl('${p[0]}2')) v[i][p[2]] = _dbl('${p[0]}v2');
     });
 
     nodes[i] = Offset(pos.dx + v[i][0], pos.dy + v[i][1]);
