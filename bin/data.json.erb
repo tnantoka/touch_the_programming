@@ -52,13 +52,15 @@ RADIUS = <<EOD.strip
         "id": "r"
       },
 EOD
-IF1 = <<EOD.strip
+IFX1 = <<EOD.strip
       {
         "val": "999999999",
         "hide": true,
         "opts": [],
         "id": "ifx1"
       },
+EOD
+IFY1 = <<EOD.strip
       {
         "val": "999999999",
         "hide": true,
@@ -66,19 +68,29 @@ IF1 = <<EOD.strip
         "id": "ify1"
       },
 EOD
-IF2 = <<EOD.strip
+IFX2 = <<EOD.strip
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ifx2"
       },
+EOD
+IFY2 = <<EOD.strip
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ify2"
       },
+EOD
+IF1 = <<EOD.strip
+      #{IFX1}
+      #{IFY1}
+EOD
+IF2 = <<EOD.strip
+      #{IFX2}
+      #{IFY2}
 EOD
 FILL = <<EOD.strip
       {
@@ -114,6 +126,14 @@ STROKE = <<EOD.strip
         "id": "strw"
       },
 EOD
+SH = <<EOD.strip
+      {
+        "val": "Circle",
+        "hide": true,
+        "opts": [],
+        "id": "sh"
+      },
+EOD
 %>
 [
   <%- # --- 1. Hello --- -%>
@@ -124,6 +144,7 @@ EOD
       <%= STROKE %>
       <%= IF1 %>
       <%= IF2 %>
+      <%= SH %>
   <%- # --- -%>
       {
         "val": "/*",
@@ -183,6 +204,7 @@ EOD
       <%= IF2 %>
       <%= FILL %>
       <%= STROKE %>
+      <%= SH %>
   <%- # --- -%>
       {
         "val": "/*",
@@ -222,6 +244,7 @@ EOD
       <%= IF2 %>
       <%= FILL %>
       <%= STROKE %>
+      <%= SH %>
   <%- # --- -%>
       {
         "val": "/*",
@@ -308,153 +331,55 @@ EOD
     ]
   ],
 
-  <%- # --- Loop --- -%>
+  <%- # --- 4. Numbers --- -%>
   [
     [
-      {
-        "val": "50",
-        "hide": true,
-        "id": "r",
-        "opts": []
-      },
-      {
-        "val": "000000",
-        "hide": true,
-        "opts": [],
-        "id": "fill"
-      },
-      {
-        "val": "0.1",
-        "hide": true,
-        "opts": [],
-        "id": "fillopa"
-      },
-      {
-        "val": "000000",
-        "hide": true,
-        "opts": [],
-        "id": "str"
-      },
-      {
-        "val": "0.9",
-        "hide": true,
-        "opts": [],
-        "id": "stropa"
-      },
-      {
-        "val": "1",
-        "hide": true,
-        "opts": [],
-        "id": "strw"
-      },
+      <%= RADIUS %>
       <%= IF1 %>
       <%= IF2 %>
+      <%= FILL %>
+      <%= STROKE %>
+      <%= SH %>
+      {
+        "val": "Random",
+        "hide": true,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "x"
+      },
+      {
+        "val": "Random",
+        "hide": true,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "y"
+      },
   <%- # --- -%>
       {
-        "val": "vx = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1",
-        "hide": false,
-        "opts": <%= V %>,
-        "noCache": false,
-        "id": "vx"
-      }
-    ],
-    [
-      {
-        "val": "vy = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "0",
-        "hide": false,
-        "opts": <%= V %>,
-        "noCache": false,
-        "id": "vy"
-      }
-    ],
-    [
-      {
-        "val": "while(true) {",
+        "val": "/*",
         "hide": false,
         "opts": []
       }
     ],
     [
       {
-        "val": "  x += vx",
+        "val": "If you increase \"numbers\",",
         "hide": false,
         "opts": []
       }
     ],
     [
       {
-        "val": "  y += vy",
+        "val": "the number of shapes increases.",
         "hide": false,
         "opts": []
       }
     ],
     [
       {
-        "val": "}",
+        "val": "*/",
         "hide": false,
         "opts": []
-      }
-    ]
-  ],
-
-  <%- # --- If --- -%>
-  [
-    [
-      {
-        "val": "50",
-        "hide": true,
-        "id": "r",
-        "opts": []
-      },
-      {
-        "val": "000000",
-        "hide": true,
-        "opts": [],
-        "id": "fill"
-      },
-      {
-        "val": "0.1",
-        "hide": true,
-        "opts": [],
-        "id": "fillopa"
-      },
-      <%= IF2 %>
-  <%- # --- -%>
-      {
-        "val": "vx = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1",
-        "hide": false,
-        "opts": <%= V %>,
-        "noCache": false,
-        "id": "vx"
-      }
-    ],
-    [
-      {
-        "val": "vy = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1",
-        "hide": false,
-        "opts": <%= V %>,
-        "noCache": false,
-        "id": "vy"
       }
     ],
     [
@@ -470,126 +395,75 @@ EOD
         "noCache": false,
         "id": "n"
       }
-    ],
+    ]
+  ],
+
+  <%- # --- 5. Styles --- -%>
+  [
     [
+      <%= IF1 %>
+      <%= IF2 %>
+      <%= SH %>
+  <%- # --- -%>
       {
-        "val": "while(true) {",
+        "val": "/* The size of shapes. */",
         "hide": false,
         "opts": []
       }
     ],
     [
       {
-        "val": "  x += vx",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "  y += vy",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "  if (x > ",
+        "val": "radius = ",
         "hide": false,
         "opts": []
       },
       {
         "val": "50",
         "hide": false,
-        "opts": <%= OFFSETS %>,
+        "opts": <%= SIZES %>,
+        "id": "r"
+      }
+    ],
+    [
+      {
+        "val": "/* Fill */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "fillColor = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": false,
+        "opts": <%= COLORS %>,
         "noCache": false,
-        "id": "ifx1"
-      },
-      {
-        "val": ") {",
-        "hide": false,
-        "opts": []
+        "id": "fill"
       }
     ],
     [
       {
-        "val": "    x = ",
+        "val": "fillOpacity = ",
         "hide": false,
         "opts": []
       },
       {
-        "val": "0",
+        "val": "0.1",
         "hide": false,
-        "opts": <%= V %>,
+        "opts": <%= OPACITY %>,
         "noCache": false,
-        "id": "ifvx1"
+        "id": "fillopa"
       }
     ],
     [
       {
-        "val": "  }",
+        "val": "/* Stroke */",
         "hide": false,
         "opts": []
-      }
-    ],
-    [
-      {
-        "val": "  if (y > ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "100",
-        "hide": false,
-        "opts": <%= OFFSETS %>,
-        "noCache": false,
-        "id": "ify1"
-      },
-      {
-        "val": ") {",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "    y = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "0",
-        "hide": false,
-        "opts": <%= V %>,
-        "noCache": true,
-        "id": "ifvy1"
-      }
-    ],
-    [
-      {
-        "val": "  }",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "}",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "line = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "true",
-        "hide": false,
-        "opts": <%= LINE %>,
-        "id": "l"
       }
     ],
     [
@@ -622,6 +496,188 @@ EOD
     ],
     [
       {
+        "val": "strokeWidth = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "hide": false,
+        "opts": <%= LINE_WIDTH %>,
+        "noCache": false,
+        "id": "strw"
+      }
+    ]
+  ],
+
+  <%- # --- 6. Loop --- -%>
+  [
+    [
+      <%= RADIUS %>
+      <%= FILL %>
+      <%= STROKE %>
+      <%= IF1 %>
+      <%= IF2 %>
+      <%= SH %>
+  <%- # --- -%>
+      {
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "\"loop\" repeats the same thing.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "It is a specialty of computer.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "/* Speed of x. */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "vx = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1",
+        "hide": false,
+        "opts": <%= V %>,
+        "noCache": false,
+        "id": "vx"
+      }
+    ],
+    [
+      {
+        "val": "/* Speed of y. */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "vy = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0",
+        "hide": false,
+        "opts": <%= V %>,
+        "noCache": false,
+        "id": "vy"
+      }
+    ],
+    [
+      {
+        "val": "/* Update position and move shape. */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "loop {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  x = x + vx",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  y = y + vy",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "}",
+        "hide": false,
+        "opts": []
+      }
+    ]
+  ],
+
+  <%- # --- 7. Line --- -%>
+  [
+    [
+      <%= RADIUS %>
+      <%= FILL %>
+      <%= STROKE %>
+      <%= IF1 %>
+      <%= IF2 %>
+      <%= SH %>
+      {
+        "val": "Random",
+        "hide": true,
+        "opts": <%= V %>,
+        "noCache": false,
+        "id": "vx"
+      },
+      {
+        "val": "Random",
+        "hide": true,
+        "opts": <%= V %>,
+        "noCache": false,
+        "id": "vy"
+      },
+  <%- # --- -%>
+      {
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "\"Line\" draws a trace of movement.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "line = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "true",
+        "hide": false,
+        "opts": <%= LINE %>,
+        "id": "l"
+      }
+    ],
+    [
+      {
         "val": "lineColor = ",
         "hide": false,
         "opts": []
@@ -650,20 +706,6 @@ EOD
     ],
     [
       {
-        "val": "strokeWidth = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1.0",
-        "hide": false,
-        "opts": <%= LINE_WIDTH %>,
-        "noCache": false,
-        "id": "strw"
-      }
-    ],
-    [
-      {
         "val": "lineWidth = ",
         "hide": false,
         "opts": []
@@ -678,41 +720,147 @@ EOD
     ]
   ],
 
-  <%- # --- Wrap-up --- -%>
+  <%- # --- 8. If --- -%>
   [
     [
+      <%= RADIUS %>
+      <%= FILL %>
+      <%= STROKE %>
+      <%= IFY1 %>
+      <%= IFY2 %>
+      <%= SH %>
+  <%- # --- -%>
       {
-        "val": "000000",
-        "hide": true,
-        "opts": [],
-        "id": "fill"
-      },
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
       {
-        "val": "0.1",
-        "hide": true,
-        "opts": [],
-        "id": "fillopa"
-      },
-      {
-        "val": "000000",
-        "hide": true,
-        "opts": [],
-        "id": "str"
-      },
-      {
-        "val": "0.9",
-        "hide": true,
-        "opts": [],
-        "id": "stropa"
+        "val": "vx = ",
+        "hide": false,
+        "opts": []
       },
       {
         "val": "1",
-        "hide": true,
-        "opts": [],
-        "id": "strw"
+        "hide": false,
+        "opts": <%= V %>,
+        "noCache": false,
+        "id": "vx"
+      }
+    ],
+    [
+      {
+        "val": "loop {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  x = x + vx",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (x > ",
+        "hide": false,
+        "opts": []
       },
+      {
+        "val": "150",
+        "hide": false,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "ifx1"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vx = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": <%= V %>,
+        "noCache": false,
+        "id": "ifxv1"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (x < ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-150",
+        "hide": false,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "ifx2"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vx = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1",
+        "hide": false,
+        "opts": <%= V %>,
+        "noCache": true,
+        "id": "ifxv2"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "}",
+        "hide": false,
+        "opts": []
+      }
+    ]
+  ],
+
+  <%- # --- 9. Wrap-up --- -%>
+  [
+    [
+      <%= FILL %>
+      <%= STROKE %>
       <%= IF1 %>
       <%= IF2 %>
+      <%= SH %>
   <%- # --- -%>
       {
         "val": "radius = ",

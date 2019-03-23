@@ -51,16 +51,22 @@
         "id": "ify1"
       },
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ifx2"
       },
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ify2"
+      },
+      {
+        "val": "Circle",
+        "hide": true,
+        "opts": [],
+        "id": "sh"
       },
       {
         "val": "/*",
@@ -133,13 +139,13 @@
         "id": "ify1"
       },
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ifx2"
       },
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ify2"
@@ -173,6 +179,12 @@
         "hide": true,
         "opts": [],
         "id": "strw"
+      },
+      {
+        "val": "Circle",
+        "hide": true,
+        "opts": [],
+        "id": "sh"
       },
       {
         "val": "/*",
@@ -225,13 +237,13 @@
         "id": "ify1"
       },
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ifx2"
       },
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ify2"
@@ -265,6 +277,12 @@
         "hide": true,
         "opts": [],
         "id": "strw"
+      },
+      {
+        "val": "Circle",
+        "hide": true,
+        "opts": [],
+        "id": "sh"
       },
       {
         "val": "/*",
@@ -356,8 +374,32 @@
       {
         "val": "50",
         "hide": true,
-        "id": "r",
-        "opts": []
+        "opts": [],
+        "id": "r"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify1"
+      },
+      {
+        "val": "-999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "-999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
       },
       {
         "val": "000000",
@@ -390,143 +432,50 @@
         "id": "strw"
       },
       {
-        "val": "999999999",
+        "val": "Circle",
         "hide": true,
         "opts": [],
-        "id": "ifx1"
+        "id": "sh"
       },
       {
-        "val": "999999999",
+        "val": "Random",
         "hide": true,
-        "opts": [],
-        "id": "ify1"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ifx2"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ify2"
-      },
-      {
-        "val": "vx = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1",
-        "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
         "noCache": false,
-        "id": "vx"
-      }
-    ],
-    [
-      {
-        "val": "vy = ",
-        "hide": false,
-        "opts": []
+        "id": "x"
       },
       {
-        "val": "0",
-        "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "val": "Random",
+        "hide": true,
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
         "noCache": false,
-        "id": "vy"
-      }
-    ],
-    [
+        "id": "y"
+      },
       {
-        "val": "while(true) {",
+        "val": "/*",
         "hide": false,
         "opts": []
       }
     ],
     [
       {
-        "val": "  x += vx",
+        "val": "If you increase \"numbers\",",
         "hide": false,
         "opts": []
       }
     ],
     [
       {
-        "val": "  y += vy",
+        "val": "the number of shapes increases.",
         "hide": false,
         "opts": []
       }
     ],
     [
       {
-        "val": "}",
+        "val": "*/",
         "hide": false,
         "opts": []
-      }
-    ]
-  ],
-
-  [
-    [
-      {
-        "val": "50",
-        "hide": true,
-        "id": "r",
-        "opts": []
-      },
-      {
-        "val": "000000",
-        "hide": true,
-        "opts": [],
-        "id": "fill"
-      },
-      {
-        "val": "0.1",
-        "hide": true,
-        "opts": [],
-        "id": "fillopa"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ifx2"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ify2"
-      },
-      {
-        "val": "vx = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1",
-        "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
-        "noCache": false,
-        "id": "vx"
-      }
-    ],
-    [
-      {
-        "val": "vy = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1",
-        "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
-        "noCache": false,
-        "id": "vy"
       }
     ],
     [
@@ -542,126 +491,100 @@
         "noCache": false,
         "id": "n"
       }
-    ],
+    ]
+  ],
+
+  [
     [
       {
-        "val": "while(true) {",
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify1"
+      },
+      {
+        "val": "-999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "-999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
+      },
+      {
+        "val": "Circle",
+        "hide": true,
+        "opts": [],
+        "id": "sh"
+      },
+      {
+        "val": "/* The size of shapes. */",
         "hide": false,
         "opts": []
       }
     ],
     [
       {
-        "val": "  x += vx",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "  y += vy",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "  if (x > ",
+        "val": "radius = ",
         "hide": false,
         "opts": []
       },
       {
         "val": "50",
         "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "opts": ["50","100","150","Random"],
+        "id": "r"
+      }
+    ],
+    [
+      {
+        "val": "/* Fill */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "fillColor = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": false,
+        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
         "noCache": false,
-        "id": "ifx1"
-      },
-      {
-        "val": ") {",
-        "hide": false,
-        "opts": []
+        "id": "fill"
       }
     ],
     [
       {
-        "val": "    x = ",
+        "val": "fillOpacity = ",
         "hide": false,
         "opts": []
       },
       {
-        "val": "0",
+        "val": "0.1",
         "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
         "noCache": false,
-        "id": "ifvx1"
+        "id": "fillopa"
       }
     ],
     [
       {
-        "val": "  }",
+        "val": "/* Stroke */",
         "hide": false,
         "opts": []
-      }
-    ],
-    [
-      {
-        "val": "  if (y > ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "100",
-        "hide": false,
-        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
-        "noCache": false,
-        "id": "ify1"
-      },
-      {
-        "val": ") {",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "    y = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "0",
-        "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
-        "noCache": true,
-        "id": "ifvy1"
-      }
-    ],
-    [
-      {
-        "val": "  }",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "}",
-        "hide": false,
-        "opts": []
-      }
-    ],
-    [
-      {
-        "val": "line = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "true",
-        "hide": false,
-        "opts": ["true","false"],
-        "id": "l"
       }
     ],
     [
@@ -694,6 +617,304 @@
     ],
     [
       {
+        "val": "strokeWidth = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "hide": false,
+        "opts": ["1.0","2.0","3.0","Random"],
+        "noCache": false,
+        "id": "strw"
+      }
+    ]
+  ],
+
+  [
+    [
+      {
+        "val": "50",
+        "hide": true,
+        "opts": [],
+        "id": "r"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "fill"
+      },
+      {
+        "val": "0.1",
+        "hide": true,
+        "opts": [],
+        "id": "fillopa"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "str"
+      },
+      {
+        "val": "0.9",
+        "hide": true,
+        "opts": [],
+        "id": "stropa"
+      },
+      {
+        "val": "1",
+        "hide": true,
+        "opts": [],
+        "id": "strw"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify1"
+      },
+      {
+        "val": "-999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "-999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
+      },
+      {
+        "val": "Circle",
+        "hide": true,
+        "opts": [],
+        "id": "sh"
+      },
+      {
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "\"loop\" repeats the same thing.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "It is a specialty of computer.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "/* Speed of x. */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "vx = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1",
+        "hide": false,
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "noCache": false,
+        "id": "vx"
+      }
+    ],
+    [
+      {
+        "val": "/* Speed of y. */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "vy = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0",
+        "hide": false,
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "noCache": false,
+        "id": "vy"
+      }
+    ],
+    [
+      {
+        "val": "/* Update position and move shape. */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "loop {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  x = x + vx",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  y = y + vy",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "}",
+        "hide": false,
+        "opts": []
+      }
+    ]
+  ],
+
+  [
+    [
+      {
+        "val": "50",
+        "hide": true,
+        "opts": [],
+        "id": "r"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "fill"
+      },
+      {
+        "val": "0.1",
+        "hide": true,
+        "opts": [],
+        "id": "fillopa"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "str"
+      },
+      {
+        "val": "0.9",
+        "hide": true,
+        "opts": [],
+        "id": "stropa"
+      },
+      {
+        "val": "1",
+        "hide": true,
+        "opts": [],
+        "id": "strw"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx1"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify1"
+      },
+      {
+        "val": "-999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ifx2"
+      },
+      {
+        "val": "-999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
+      },
+      {
+        "val": "Circle",
+        "hide": true,
+        "opts": [],
+        "id": "sh"
+      },
+      {
+        "val": "Random",
+        "hide": true,
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "noCache": false,
+        "id": "vx"
+      },
+      {
+        "val": "Random",
+        "hide": true,
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "noCache": false,
+        "id": "vy"
+      },
+      {
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "\"Line\" draws a trace of movement.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "line = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "true",
+        "hide": false,
+        "opts": ["true","false"],
+        "id": "l"
+      }
+    ],
+    [
+      {
         "val": "lineColor = ",
         "hide": false,
         "opts": []
@@ -722,20 +943,6 @@
     ],
     [
       {
-        "val": "strokeWidth = ",
-        "hide": false,
-        "opts": []
-      },
-      {
-        "val": "1.0",
-        "hide": false,
-        "opts": ["1.0","2.0","3.0","Random"],
-        "noCache": false,
-        "id": "strw"
-      }
-    ],
-    [
-      {
         "val": "lineWidth = ",
         "hide": false,
         "opts": []
@@ -746,6 +953,185 @@
         "opts": ["1.0","2.0","3.0","Random"],
         "noCache": false,
         "id": "linew"
+      }
+    ]
+  ],
+
+  [
+    [
+      {
+        "val": "50",
+        "hide": true,
+        "opts": [],
+        "id": "r"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "fill"
+      },
+      {
+        "val": "0.1",
+        "hide": true,
+        "opts": [],
+        "id": "fillopa"
+      },
+      {
+        "val": "000000",
+        "hide": true,
+        "opts": [],
+        "id": "str"
+      },
+      {
+        "val": "0.9",
+        "hide": true,
+        "opts": [],
+        "id": "stropa"
+      },
+      {
+        "val": "1",
+        "hide": true,
+        "opts": [],
+        "id": "strw"
+      },
+      {
+        "val": "999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify1"
+      },
+      {
+        "val": "-999999999",
+        "hide": true,
+        "opts": [],
+        "id": "ify2"
+      },
+      {
+        "val": "Circle",
+        "hide": true,
+        "opts": [],
+        "id": "sh"
+      },
+      {
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "vx = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1",
+        "hide": false,
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "noCache": false,
+        "id": "vx"
+      }
+    ],
+    [
+      {
+        "val": "loop {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  x = x + vx",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (x > ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "150",
+        "hide": false,
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "noCache": false,
+        "id": "ifx1"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vx = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "noCache": false,
+        "id": "ifxv1"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (x < ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-150",
+        "hide": false,
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "noCache": false,
+        "id": "ifx2"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vx = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1",
+        "hide": false,
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "noCache": true,
+        "id": "ifxv2"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "}",
+        "hide": false,
+        "opts": []
       }
     ]
   ],
@@ -795,16 +1181,22 @@
         "id": "ify1"
       },
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ifx2"
       },
       {
-        "val": "999999999",
+        "val": "-999999999",
         "hide": true,
         "opts": [],
         "id": "ify2"
+      },
+      {
+        "val": "Circle",
+        "hide": true,
+        "opts": [],
+        "id": "sh"
       },
       {
         "val": "radius = ",

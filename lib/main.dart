@@ -28,19 +28,15 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
   List<List<List<Code>>> data = [
     [[]]
   ];
-  var player = Player(Size(512, 512));
-  var menu = toL([
-    '1. Hello',
-    '2. Comments',
-    '3. Position',
-    'Loop',
-    'If',
-    'Wrap-up'
-  ].map((m) => Tab(text: m)));
+  var demo = Demo(Size(512, 512));
+  var menu = toL(
+      '1. Hello,2. Comments,3. Position,4. Numbers,5. Styles,6. Loop,7. Line,8. If,9. Wrap-up'
+          .split(',')
+          .map((m) => Tab(text: m)));
   var _tab;
   initState() {
     super.initState();
-    _tab = TabController(length: 6, vsync: this)
+    _tab = TabController(length: 8, vsync: this)
       ..addListener(() {
         if (_tab.indexIsChanging) _syncTab();
       });
@@ -69,16 +65,19 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
         body: Column(
           children: [
             AspectRatio(
-                aspectRatio: 1.3, child: ClipRect(child: SpriteWidget(player))),
+                aspectRatio: 1.3, child: ClipRect(child: SpriteWidget(demo))),
             Container(color: Colors.grey[50], child: tabBar),
             Expanded(child: TabBarView(controller: _tab, children: tabs))
           ],
         ));
   }
 
-  _syncTab() => player.init(toL(data[_tab.index].expand((l) => l)));
+  _syncTab() => demo.init(toL(data[_tab.index].expand((l) => l)));
   _codeSpan(Code c) => c.opts.isEmpty || c.hide
-      ? Text(c.hide ? '' : c.val)
+      ? Text(c.hide ? '' : c.val,
+          style: c.val.contains(new RegExp(r'[,!/\.]'))
+              ? TextStyle(color: Colors.green)
+              : null)
       : DropdownButton(
           value: c.val,
           onChanged: (v) => setState(() => c.val = v),
@@ -88,40 +87,41 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
           style: TextStyle(color: Colors.red, fontSize: 16));
 }
 
-class Player extends NodeWithSize {
-  Player(s) : super(s);
+class Demo extends NodeWithSize {
+  Demo(s) : super(s);
   int n, i, f;
-  List nodes, tabs;
+  List nodes, tabs, v;
   init(tab) {
     n = int.parse(find(tab, 'n') ?? '1');
     nodes = [];
     tabs = [];
+    v = [];
     removeAllChildren();
     for (i = 0; i < n; i++) {
       tabs.add(toL(tab.map((c) => c.clone())));
       nodes.add(Offset(256 + _dbl('x'), 256 + _dbl('y')));
+      v.add([_dbl('vx'), _dbl('vy')]);
     }
     f = 0;
   }
 
   paint(c) {
-    for (i = 0; i < n && i * 10 < f; i++) {
-      _paint(c);
-    }
+    for (i = 0; i < n && i * 10 < f; i++) _draw(c);
     f++;
   }
 
-  _paint(c) {
+  _draw(c) {
     var pos = nodes[i];
-    var vx = _dbl('vx');
-    var vy = _dbl('vy');
 
-    [1, 2].forEach((j) {
-      if (pos.dx > 256 + _dbl('ifx$j')) vx = _dbl('ifvx$j');
-      if (pos.dy > 256 + _dbl('ify$j')) vy = _dbl('ifvy$j');
+    [
+      ['ifx', pos.dx],
+      ['ify', pos.dy]
+    ].forEach((p) {
+      if (p[1] > 256 + _dbl('${p[0]}1')) v[i][0] = _dbl('${p[0]}v1');
+      if (p[1] < 256 + _dbl('${p[0]}2')) v[i][0] = _dbl('${p[0]}v2');
     });
 
-    nodes[i] = Offset(pos.dx + vx, pos.dy + vy);
+    nodes[i] = Offset(pos.dx + v[i][0], pos.dy + v[i][1]);
 
     if (_val('l') == 'true') {
       addChild(Dot()
@@ -137,17 +137,14 @@ class Player extends NodeWithSize {
         ..color = _col(l[0])
         ..style = PaintingStyle.values[l[1]]
         ..strokeWidth = _dbl('strw');
-      var shapes = Shapes(canvas: c)
-        ..radius = _dbl('r')
-        ..paint = p
-        ..center = pos;
-      shapes.draw(_val('sh') ?? 'Circle');
+      Shapes(canvas: c, radius: _dbl('r'), paint: p, center: pos)
+          .draw(_val('sh'));
     });
   }
 
   _val(id) => find(tabs[i], id);
   _dbl(id) => double.parse(_val(id) ?? '0');
-  _col(id) => Color(int.parse(_val(id) ?? '000000', radix: 16))
+  _col(id) => Color(int.parse(_val(id) ?? '0', radix: 16))
       .withOpacity(_dbl('${id}opa'));
 }
 
