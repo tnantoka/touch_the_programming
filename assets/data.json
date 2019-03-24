@@ -12,31 +12,31 @@
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "fill"
+        "id": "fi"
       },
       {
         "val": "0.1",
         "hide": true,
         "opts": [],
-        "id": "fillopa"
+        "id": "fiop"
       },
       {
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "str"
+        "id": "st"
       },
       {
         "val": "0.9",
         "hide": true,
         "opts": [],
-        "id": "stropa"
+        "id": "stop"
       },
       {
         "val": "1",
         "hide": true,
         "opts": [],
-        "id": "strw"
+        "id": "stw"
       },
       {
         "val": "999999999",
@@ -154,31 +154,31 @@
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "fill"
+        "id": "fi"
       },
       {
         "val": "0.1",
         "hide": true,
         "opts": [],
-        "id": "fillopa"
+        "id": "fiop"
       },
       {
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "str"
+        "id": "st"
       },
       {
         "val": "0.9",
         "hide": true,
         "opts": [],
-        "id": "stropa"
+        "id": "stop"
       },
       {
         "val": "1",
         "hide": true,
         "opts": [],
-        "id": "strw"
+        "id": "stw"
       },
       {
         "val": "Circle",
@@ -252,31 +252,31 @@
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "fill"
+        "id": "fi"
       },
       {
         "val": "0.1",
         "hide": true,
         "opts": [],
-        "id": "fillopa"
+        "id": "fiop"
       },
       {
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "str"
+        "id": "st"
       },
       {
         "val": "0.9",
         "hide": true,
         "opts": [],
-        "id": "stropa"
+        "id": "stop"
       },
       {
         "val": "1",
         "hide": true,
         "opts": [],
-        "id": "strw"
+        "id": "stw"
       },
       {
         "val": "Circle",
@@ -405,31 +405,31 @@
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "fill"
+        "id": "fi"
       },
       {
         "val": "0.1",
         "hide": true,
         "opts": [],
-        "id": "fillopa"
+        "id": "fiop"
       },
       {
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "str"
+        "id": "st"
       },
       {
         "val": "0.9",
         "hide": true,
         "opts": [],
-        "id": "stropa"
+        "id": "stop"
       },
       {
         "val": "1",
         "hide": true,
         "opts": [],
-        "id": "strw"
+        "id": "stw"
       },
       {
         "val": "Circle",
@@ -521,12 +521,6 @@
         "id": "ify2"
       },
       {
-        "val": "Circle",
-        "hide": true,
-        "opts": [],
-        "id": "sh"
-      },
-      {
         "val": "/* The size of shapes. */",
         "hide": false,
         "opts": []
@@ -542,6 +536,7 @@
         "val": "50",
         "hide": false,
         "opts": ["50","100","150","Random"],
+        "noCache": false,
         "id": "r"
       }
     ],
@@ -563,7 +558,7 @@
         "hide": false,
         "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
         "noCache": false,
-        "id": "fill"
+        "id": "fi"
       }
     ],
     [
@@ -577,7 +572,7 @@
         "hide": false,
         "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
         "noCache": false,
-        "id": "fillopa"
+        "id": "fiop"
       }
     ],
     [
@@ -598,7 +593,7 @@
         "hide": false,
         "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
         "noCache": false,
-        "id": "str"
+        "id": "st"
       }
     ],
     [
@@ -612,7 +607,7 @@
         "hide": false,
         "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
         "noCache": false,
-        "id": "stropa"
+        "id": "stop"
       }
     ],
     [
@@ -624,9 +619,30 @@
       {
         "val": "1.0",
         "hide": false,
-        "opts": ["1.0","2.0","3.0","Random"],
+        "opts": ["0.0","1.0","2.0","3.0","Random"],
         "noCache": false,
-        "id": "strw"
+        "id": "stw"
+      }
+    ],
+    [
+      {
+        "val": "/* Shape */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "shape = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "Circle",
+        "hide": false,
+        "opts": ["Circle","Rect","RoundedRect","Triangle","Diamond","Pentagon","Hexagon","Octagon","Decagon","Dodecagon","Heart","Star5","Star6","Star7","Star8","Random"],
+        "noCache": false,
+        "id": "sh"
       }
     ]
   ],
@@ -643,31 +659,31 @@
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "fill"
+        "id": "fi"
       },
       {
         "val": "0.1",
         "hide": true,
         "opts": [],
-        "id": "fillopa"
+        "id": "fiop"
       },
       {
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "str"
+        "id": "st"
       },
       {
         "val": "0.9",
         "hide": true,
         "opts": [],
-        "id": "stropa"
+        "id": "stop"
       },
       {
         "val": "1",
         "hide": true,
         "opts": [],
-        "id": "strw"
+        "id": "stw"
       },
       {
         "val": "999999999",
@@ -742,7 +758,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10","Random"],
         "noCache": false,
         "id": "vx"
       }
@@ -763,7 +779,7 @@
       {
         "val": "0",
         "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10","Random"],
         "noCache": false,
         "id": "vy"
       }
@@ -817,31 +833,31 @@
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "fill"
+        "id": "fi"
       },
       {
         "val": "0.1",
         "hide": true,
         "opts": [],
-        "id": "fillopa"
+        "id": "fiop"
       },
       {
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "str"
+        "id": "st"
       },
       {
         "val": "0.9",
         "hide": true,
         "opts": [],
-        "id": "stropa"
+        "id": "stop"
       },
       {
         "val": "1",
         "hide": true,
         "opts": [],
-        "id": "strw"
+        "id": "stw"
       },
       {
         "val": "999999999",
@@ -876,14 +892,14 @@
       {
         "val": "Random",
         "hide": true,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10","Random"],
         "noCache": false,
         "id": "vx"
       },
       {
         "val": "Random",
         "hide": true,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10","Random"],
         "noCache": false,
         "id": "vy"
       },
@@ -902,15 +918,9 @@
     ],
     [
       {
-        "val": "line = ",
+        "val": "*/",
         "hide": false,
         "opts": []
-      },
-      {
-        "val": "true",
-        "hide": false,
-        "opts": ["true","false"],
-        "id": "l"
       }
     ],
     [
@@ -924,7 +934,7 @@
         "hide": false,
         "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
         "noCache": false,
-        "id": "line"
+        "id": "li"
       }
     ],
     [
@@ -938,7 +948,7 @@
         "hide": false,
         "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
         "noCache": false,
-        "id": "lineopa"
+        "id": "liop"
       }
     ],
     [
@@ -950,9 +960,9 @@
       {
         "val": "1.0",
         "hide": false,
-        "opts": ["1.0","2.0","3.0","Random"],
+        "opts": ["0.0","1.0","2.0","3.0","Random"],
         "noCache": false,
-        "id": "linew"
+        "id": "liw"
       }
     ]
   ],
@@ -969,31 +979,31 @@
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "fill"
+        "id": "fi"
       },
       {
         "val": "0.1",
         "hide": true,
         "opts": [],
-        "id": "fillopa"
+        "id": "fiop"
       },
       {
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "str"
+        "id": "st"
       },
       {
         "val": "0.9",
         "hide": true,
         "opts": [],
-        "id": "stropa"
+        "id": "stop"
       },
       {
         "val": "1",
         "hide": true,
         "opts": [],
-        "id": "strw"
+        "id": "stw"
       },
       {
         "val": "999999999",
@@ -1021,6 +1031,20 @@
     ],
     [
       {
+        "val": "\"If\" is used for the condition.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
         "val": "vx = ",
         "hide": false,
         "opts": []
@@ -1028,7 +1052,7 @@
       {
         "val": "1",
         "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10","Random"],
         "noCache": false,
         "id": "vx"
       }
@@ -1068,14 +1092,14 @@
     ],
     [
       {
-        "val": "    vx = ",
+        "val": "    vx = vx * ",
         "hide": false,
         "opts": []
       },
       {
         "val": "-1",
         "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "opts": ["-0.25","-0.5","-1","-2","0","0.25","0.5","1","2","Random"],
         "noCache": false,
         "id": "ifxv1"
       }
@@ -1108,14 +1132,14 @@
     ],
     [
       {
-        "val": "    vx = ",
+        "val": "    vx = vx *",
         "hide": false,
         "opts": []
       },
       {
-        "val": "1",
+        "val": "-1",
         "hide": false,
-        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10"],
+        "opts": ["-0.25","-0.5","-1","-2","0","0.25","0.5","1","2","Random"],
         "noCache": true,
         "id": "ifxv2"
       }
@@ -1139,65 +1163,68 @@
   [
     [
       {
-        "val": "000000",
-        "hide": true,
-        "opts": [],
-        "id": "fill"
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "Let's use the program we learned.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "x = ",
+        "hide": false,
+        "opts": []
       },
       {
-        "val": "0.1",
-        "hide": true,
-        "opts": [],
-        "id": "fillopa"
+        "val": "0",
+        "hide": false,
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "noCache": false,
+        "id": "x"
+      }
+    ],
+    [
+      {
+        "val": "y = ",
+        "hide": false,
+        "opts": []
       },
       {
-        "val": "000000",
-        "hide": true,
-        "opts": [],
-        "id": "str"
-      },
+        "val": "0",
+        "hide": false,
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "noCache": false,
+        "id": "y"
+      }
+    ],
+    [
       {
-        "val": "0.9",
-        "hide": true,
-        "opts": [],
-        "id": "stropa"
+        "val": "numbers = ",
+        "hide": false,
+        "opts": []
       },
       {
         "val": "1",
-        "hide": true,
-        "opts": [],
-        "id": "strw"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ifx1"
-      },
-      {
-        "val": "999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ify1"
-      },
-      {
-        "val": "-999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ifx2"
-      },
-      {
-        "val": "-999999999",
-        "hide": true,
-        "opts": [],
-        "id": "ify2"
-      },
-      {
-        "val": "Circle",
-        "hide": true,
-        "opts": [],
-        "id": "sh"
-      },
+        "hide": false,
+        "opts": ["1","3","5","7","9","11","13","15","17","19","21","23","25","27","29","Random"],
+        "noCache": false,
+        "id": "n"
+      }
+    ],
+    [
       {
         "val": "radius = ",
         "hide": false,
@@ -1207,7 +1234,351 @@
         "val": "50",
         "hide": false,
         "opts": ["50","100","150","Random"],
+        "noCache": false,
         "id": "r"
+      }
+    ],
+    [
+      {
+        "val": "fillColor = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": false,
+        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
+        "noCache": false,
+        "id": "fi"
+      }
+    ],
+    [
+      {
+        "val": "fillOpacity = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0.1",
+        "hide": false,
+        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
+        "noCache": false,
+        "id": "fiop"
+      }
+    ],
+    [
+      {
+        "val": "strokeColor = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": false,
+        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
+        "noCache": false,
+        "id": "st"
+      }
+    ],
+    [
+      {
+        "val": "strokeOpacity = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0.9",
+        "hide": false,
+        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
+        "noCache": false,
+        "id": "stop"
+      }
+    ],
+    [
+      {
+        "val": "strokeWidth = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "hide": false,
+        "opts": ["0.0","1.0","2.0","3.0","Random"],
+        "noCache": false,
+        "id": "stw"
+      }
+    ],
+    [
+      {
+        "val": "shape = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "Circle",
+        "hide": false,
+        "opts": ["Circle","Rect","RoundedRect","Triangle","Diamond","Pentagon","Hexagon","Octagon","Decagon","Dodecagon","Heart","Star5","Star6","Star7","Star8","Random"],
+        "noCache": false,
+        "id": "sh"
+      }
+    ],
+    [
+      {
+        "val": "vx = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "Random",
+        "hide": false,
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10","Random"],
+        "noCache": false,
+        "id": "vx"
+      }
+    ],
+    [
+      {
+        "val": "vy = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "Random",
+        "hide": false,
+        "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10","Random"],
+        "noCache": false,
+        "id": "vy"
+      }
+    ],
+    [
+      {
+        "val": "loop {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  x = x + vx",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  y = y + vy",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (x > ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "150",
+        "hide": false,
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "noCache": false,
+        "id": "ifx1"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vx = vx * ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": ["-0.25","-0.5","-1","-2","0","0.25","0.5","1","2","Random"],
+        "noCache": false,
+        "id": "ifxv1"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (x < ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-150",
+        "hide": false,
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "noCache": false,
+        "id": "ifx2"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vx = vx * ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": ["-0.25","-0.5","-1","-2","0","0.25","0.5","1","2","Random"],
+        "noCache": true,
+        "id": "ifxv2"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (y > ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "150",
+        "hide": false,
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "noCache": false,
+        "id": "ify1"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vy = vy * ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": ["-0.25","-0.5","-1","-2","0","0.25","0.5","1","2","Random"],
+        "noCache": false,
+        "id": "ifyv1"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (y < ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-150",
+        "hide": false,
+        "opts": ["-250","-200","-150","-100","-50","0","50","100","150","200","250","Random"],
+        "noCache": false,
+        "id": "ify2"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vy = vy * ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": ["-0.25","-0.5","-1","-2","0","0.25","0.5","1","2","Random"],
+        "noCache": true,
+        "id": "ifyv2"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+
+    [
+      {
+        "val": "}",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "lineColor = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": false,
+        "opts": ["000000","F44336","E91E63","FF4081","9C27B0","E040FB","673AB7","7C4DFF","3F51B5","536DFE","2196F3","448AFF","03A9F4","40C4FF","00BCD4","18FFFF","009688","64FFDA","4CAF50","69F0AE","8BC34A","B2FF59","CDDC39","EEFF41","FFEB3B","FFFF00","FFC107","FFD740","FF9800","FFAB40","FF5722","FF6E40","795548","9E9E9E","607D8B","Random"],
+        "noCache": false,
+        "id": "li"
+      }
+    ],
+    [
+      {
+        "val": "lineOpacity = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0.9",
+        "hide": false,
+        "opts": ["1.0","0.9","0.7","0.5","0.3","0.1","0.0","Random"],
+        "noCache": false,
+        "id": "liop"
+      }
+    ],
+    [
+      {
+        "val": "lineWidth = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "hide": false,
+        "opts": ["0.0","1.0","2.0","3.0","Random"],
+        "noCache": false,
+        "id": "liw"
       }
     ]
   ]

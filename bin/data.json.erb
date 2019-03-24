@@ -28,6 +28,7 @@ OPACITY = %w[
   Random
 ].to_json
 LINE_WIDTH = %w[
+  0.0
   1.0 2.0 3.0
   Random
 ].to_json
@@ -35,6 +36,13 @@ V = %w[
   -1 -3 -5 -7 -10
   0
   1 3 5 7 10
+  Random
+].to_json
+IFV = %w[
+  -0.25 -0.5 -1 -2
+  0
+  0.25 0.5 1 2
+  Random
 ].to_json
 SHAPES = %w[
   Circle Rect RoundedRect Triangle Diamond Pentagon Hexagon Octagon Decagon Dodecagon Heart
@@ -97,13 +105,13 @@ FILL = <<EOD.strip
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "fill"
+        "id": "fi"
       },
       {
         "val": "0.1",
         "hide": true,
         "opts": [],
-        "id": "fillopa"
+        "id": "fiop"
       },
 EOD
 STROKE = <<EOD.strip
@@ -111,19 +119,19 @@ STROKE = <<EOD.strip
         "val": "000000",
         "hide": true,
         "opts": [],
-        "id": "str"
+        "id": "st"
       },
       {
         "val": "0.9",
         "hide": true,
         "opts": [],
-        "id": "stropa"
+        "id": "stop"
       },
       {
         "val": "1",
         "hide": true,
         "opts": [],
-        "id": "strw"
+        "id": "stw"
       },
 EOD
 SH = <<EOD.strip
@@ -403,7 +411,6 @@ EOD
     [
       <%= IF1 %>
       <%= IF2 %>
-      <%= SH %>
   <%- # --- -%>
       {
         "val": "/* The size of shapes. */",
@@ -421,6 +428,7 @@ EOD
         "val": "50",
         "hide": false,
         "opts": <%= SIZES %>,
+        "noCache": false,
         "id": "r"
       }
     ],
@@ -442,7 +450,7 @@ EOD
         "hide": false,
         "opts": <%= COLORS %>,
         "noCache": false,
-        "id": "fill"
+        "id": "fi"
       }
     ],
     [
@@ -456,7 +464,7 @@ EOD
         "hide": false,
         "opts": <%= OPACITY %>,
         "noCache": false,
-        "id": "fillopa"
+        "id": "fiop"
       }
     ],
     [
@@ -477,7 +485,7 @@ EOD
         "hide": false,
         "opts": <%= COLORS %>,
         "noCache": false,
-        "id": "str"
+        "id": "st"
       }
     ],
     [
@@ -491,7 +499,7 @@ EOD
         "hide": false,
         "opts": <%= OPACITY %>,
         "noCache": false,
-        "id": "stropa"
+        "id": "stop"
       }
     ],
     [
@@ -505,7 +513,28 @@ EOD
         "hide": false,
         "opts": <%= LINE_WIDTH %>,
         "noCache": false,
-        "id": "strw"
+        "id": "stw"
+      }
+    ],
+    [
+      {
+        "val": "/* Shape */",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "shape = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "Circle",
+        "hide": false,
+        "opts": <%= SHAPES %>,
+        "noCache": false,
+        "id": "sh"
       }
     ]
   ],
@@ -665,15 +694,9 @@ EOD
     ],
     [
       {
-        "val": "line = ",
+        "val": "*/",
         "hide": false,
         "opts": []
-      },
-      {
-        "val": "true",
-        "hide": false,
-        "opts": <%= LINE %>,
-        "id": "l"
       }
     ],
     [
@@ -687,7 +710,7 @@ EOD
         "hide": false,
         "opts": <%= COLORS %>,
         "noCache": false,
-        "id": "line"
+        "id": "li"
       }
     ],
     [
@@ -701,7 +724,7 @@ EOD
         "hide": false,
         "opts": <%= OPACITY %>,
         "noCache": false,
-        "id": "lineopa"
+        "id": "liop"
       }
     ],
     [
@@ -715,7 +738,7 @@ EOD
         "hide": false,
         "opts": <%= LINE_WIDTH %>,
         "noCache": false,
-        "id": "linew"
+        "id": "liw"
       }
     ]
   ],
@@ -732,6 +755,20 @@ EOD
   <%- # --- -%>
       {
         "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "\"If\" is used for the condition.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
         "hide": false,
         "opts": []
       }
@@ -785,14 +822,14 @@ EOD
     ],
     [
       {
-        "val": "    vx = ",
+        "val": "    vx = vx * ",
         "hide": false,
         "opts": []
       },
       {
         "val": "-1",
         "hide": false,
-        "opts": <%= V %>,
+        "opts": <%= IFV %>,
         "noCache": false,
         "id": "ifxv1"
       }
@@ -825,14 +862,14 @@ EOD
     ],
     [
       {
-        "val": "    vx = ",
+        "val": "    vx = vx *",
         "hide": false,
         "opts": []
       },
       {
-        "val": "1",
+        "val": "-1",
         "hide": false,
-        "opts": <%= V %>,
+        "opts": <%= IFV %>,
         "noCache": true,
         "id": "ifxv2"
       }
@@ -856,12 +893,70 @@ EOD
   <%- # --- 9. Wrap-up --- -%>
   [
     [
-      <%= FILL %>
-      <%= STROKE %>
-      <%= IF1 %>
-      <%= IF2 %>
-      <%= SH %>
   <%- # --- -%>
+      {
+        "val": "/*",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "Let's use the program we learned.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "*/",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "x = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0",
+        "hide": false,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "x"
+      }
+    ],
+    [
+      {
+        "val": "y = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0",
+        "hide": false,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "y"
+      }
+    ],
+    [
+      {
+        "val": "numbers = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1",
+        "hide": false,
+        "opts": <%= NUM %>,
+        "noCache": false,
+        "id": "n"
+      }
+    ],
+    [
       {
         "val": "radius = ",
         "hide": false,
@@ -871,7 +966,351 @@ EOD
         "val": "50",
         "hide": false,
         "opts": <%= SIZES %>,
+        "noCache": false,
         "id": "r"
+      }
+    ],
+    [
+      {
+        "val": "fillColor = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": false,
+        "opts": <%= COLORS %>,
+        "noCache": false,
+        "id": "fi"
+      }
+    ],
+    [
+      {
+        "val": "fillOpacity = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0.1",
+        "hide": false,
+        "opts": <%= OPACITY %>,
+        "noCache": false,
+        "id": "fiop"
+      }
+    ],
+    [
+      {
+        "val": "strokeColor = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": false,
+        "opts": <%= COLORS %>,
+        "noCache": false,
+        "id": "st"
+      }
+    ],
+    [
+      {
+        "val": "strokeOpacity = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0.9",
+        "hide": false,
+        "opts": <%= OPACITY %>,
+        "noCache": false,
+        "id": "stop"
+      }
+    ],
+    [
+      {
+        "val": "strokeWidth = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "hide": false,
+        "opts": <%= LINE_WIDTH %>,
+        "noCache": false,
+        "id": "stw"
+      }
+    ],
+    [
+      {
+        "val": "shape = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "Circle",
+        "hide": false,
+        "opts": <%= SHAPES %>,
+        "noCache": false,
+        "id": "sh"
+      }
+    ],
+    [
+      {
+        "val": "vx = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "Random",
+        "hide": false,
+        "opts": <%= V %>,
+        "noCache": false,
+        "id": "vx"
+      }
+    ],
+    [
+      {
+        "val": "vy = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "Random",
+        "hide": false,
+        "opts": <%= V %>,
+        "noCache": false,
+        "id": "vy"
+      }
+    ],
+    [
+      {
+        "val": "loop {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  x = x + vx",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  y = y + vy",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (x > ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "150",
+        "hide": false,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "ifx1"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vx = vx * ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": <%= IFV %>,
+        "noCache": false,
+        "id": "ifxv1"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (x < ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-150",
+        "hide": false,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "ifx2"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vx = vx * ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": <%= IFV %>,
+        "noCache": true,
+        "id": "ifxv2"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (y > ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "150",
+        "hide": false,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "ify1"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vy = vy * ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": <%= IFV %>,
+        "noCache": false,
+        "id": "ifyv1"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  if (y < ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-150",
+        "hide": false,
+        "opts": <%= OFFSETS %>,
+        "noCache": false,
+        "id": "ify2"
+      },
+      {
+        "val": ") {",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "    vy = vy * ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "-1",
+        "hide": false,
+        "opts": <%= IFV %>,
+        "noCache": true,
+        "id": "ifyv2"
+      }
+    ],
+    [
+      {
+        "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+
+    [
+      {
+        "val": "}",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "lineColor = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "000000",
+        "hide": false,
+        "opts": <%= COLORS %>,
+        "noCache": false,
+        "id": "li"
+      }
+    ],
+    [
+      {
+        "val": "lineOpacity = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "0.9",
+        "hide": false,
+        "opts": <%= OPACITY %>,
+        "noCache": false,
+        "id": "liop"
+      }
+    ],
+    [
+      {
+        "val": "lineWidth = ",
+        "hide": false,
+        "opts": []
+      },
+      {
+        "val": "1.0",
+        "hide": false,
+        "opts": <%= LINE_WIDTH %>,
+        "noCache": false,
+        "id": "liw"
       }
     ]
   ]
