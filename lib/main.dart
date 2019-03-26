@@ -90,17 +90,18 @@ class _State extends State<Page> with SingleTickerProviderStateMixin {
 class Demo extends NodeWithSize {
   Demo(s) : super(s);
   int n, i, f;
-  List pos, tabs, v;
+  List pos, tabs, v, l;
   init(tab) {
     n = int.parse(find(tab, 'n') ?? '1');
     pos = [];
     tabs = [];
     v = [];
-    removeAllChildren();
+    l = [];
     for (i = 0; i < n; i++) {
       tabs.add(toL(tab.map((c) => c.clone())));
       pos.add(Offset(256 + _dbl('x'), 256 + _dbl('y')));
       v.add([_dbl('vx'), _dbl('vy')]);
+      l.add([]);
     }
     f = 0;
   }
@@ -120,11 +121,12 @@ class Demo extends NodeWithSize {
     });
     pos[i] = pos[i].translate(v[i][0], v[i][1]);
 
-    if (_dbl('liw') > 0) {
-      addChild(Dot()
-        ..position = pos[i]
-        ..col = _col('li')
-        ..w = _dbl('liw'));
+    if (_dbl('liw') > 0) l[i].add(pos[i]);
+    for (var j = 1; j < l[i].length; j += 1) {
+      var p = Paint()
+        ..color = _col('li')
+        ..strokeWidth = _dbl('liw');
+      c.drawLine(l[i][j - 1], l[i][j], p);
     }
 
     [
@@ -144,11 +146,6 @@ class Demo extends NodeWithSize {
   _dbl(id) => double.parse(_val(id) ?? '0');
   _col(id) =>
       Color(int.parse(_val(id) ?? '0', radix: 16)).withOpacity(_dbl('${id}op'));
-}
-
-class Dot extends Node {
-  var col, w;
-  paint(c) => c.drawCircle(Offset.zero, w, Paint()..color = col);
 }
 
 class Code {
