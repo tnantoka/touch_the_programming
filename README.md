@@ -1,16 +1,17 @@
-# touch_the_programming
+# Touch the Programming
 
-Touch the Programming
+![](/docs/wrap-up.png)
 
-## Getting Started
+Hello, programming.
+It's app to start coding by touch.
+By changing codes with touch, you can try drawing and animation of various shapes.
 
-This project is a starting point for a Flutter application.
+## Examples
 
-A few resources to get you started if this is your first Flutter project:
+![](/docs/position.gif)
+![](/docs/styles.gif)
+![](/docs/loop.gif)
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+## License
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+MIT
