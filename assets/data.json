@@ -90,7 +90,7 @@
     ],
     [
       {
-        "val": "It is drawn by the code.",
+        "val": "It's drawn by the code.",
         "hide": false,
         "opts": []
       }
@@ -542,7 +542,7 @@
     ],
     [
       {
-        "val": "/* Fill */",
+        "val": "/* Fill style */",
         "hide": false,
         "opts": []
       }
@@ -577,7 +577,7 @@
     ],
     [
       {
-        "val": "/* Stroke */",
+        "val": "/* Stroke style */",
         "hide": false,
         "opts": []
       }
@@ -626,7 +626,7 @@
     ],
     [
       {
-        "val": "/* Shape */",
+        "val": "/* Shape type */",
         "hide": false,
         "opts": []
       }
@@ -723,14 +723,14 @@
     ],
     [
       {
-        "val": "\"loop\" repeats the same thing.",
+        "val": "The \"loop\" repeats the same thing.",
         "hide": false,
         "opts": []
       }
     ],
     [
       {
-        "val": "It is a specialty of computer.",
+        "val": "It is a specialty of the computer.",
         "hide": false,
         "opts": []
       }
@@ -744,7 +744,7 @@
     ],
     [
       {
-        "val": "/* Speed of x. */",
+        "val": "/* A speed of x. */",
         "hide": false,
         "opts": []
       }
@@ -765,7 +765,7 @@
     ],
     [
       {
-        "val": "/* Speed of y. */",
+        "val": "/* A speed of y. */",
         "hide": false,
         "opts": []
       }
@@ -911,7 +911,7 @@
     ],
     [
       {
-        "val": "\"Line\" draws a trace of movement.",
+        "val": "The \"line\" draws a trace of movement.",
         "hide": false,
         "opts": []
       }
@@ -1031,7 +1031,7 @@
     ],
     [
       {
-        "val": "\"If\" is used for the condition.",
+        "val": "The \"if\" is used for the condition.",
         "hide": false,
         "opts": []
       }
@@ -1055,6 +1055,13 @@
         "opts": ["-1","-3","-5","-7","-10","0","1","3","5","7","10","Random"],
         "noCache": false,
         "id": "vx"
+      }
+    ],
+    [
+      {
+        "val": "/* Reverse the direction of x with condition. */",
+        "hide": false,
+        "opts": []
       }
     ],
     [
