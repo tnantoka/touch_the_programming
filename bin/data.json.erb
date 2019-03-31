@@ -8,9 +8,9 @@ COLORS = %w[
   Random
 ].to_json
 OFFSETS = %w[
-  -200 -150 -100 -50
+  -200 -175 -150 -125 -100 -75 -50 -25
   0
-  50 100 150 200
+  25 50 75 100 125 150 175 200
   Random
 ].to_json
 SIZES = %w[
@@ -19,27 +19,28 @@ SIZES = %w[
   Random
 ].to_json
 NUM = %w[
-  1 2 3 4 5 6 7 8 9
+  1 2 3 4 5 6 7 8 9 10
   11 12 13 14 15
+  20 30 40 50
   Random
 ].to_json
 OPACITY = %w[
-  1.0 0.9 0.7 0.5 0.3 0.1 0.0
+  1.0 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0.0
   Random
 ].to_json
 LINE_WIDTH = %w[
   0.0
-  1.0 2.0 3.0
+  1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0
   Random
 ].to_json
 V = %w[
-  -1 -3 -5 -7 -10
+  -1 -2 -3 -4 -5 -6 -7 -8 -9 -10
   0
-  1 3 5 7 10
+  1 2 3 4 5 6 7 8 9 10
   Random
 ].to_json
 IFV = %w[
-  -0.25 -0.5 -1 -2
+  -0.25 -0.5 -0.75 -1 -1.25 -1.5
   0
   Random
 ].to_json
@@ -788,7 +789,7 @@ EOD
     ],
     [
       {
-        "val": "/* Reverse the direction of x with condition. */",
+        "val": "/* Change the speed of x with condition. */",
         "hide": false,
         "opts": []
       }
@@ -803,6 +804,13 @@ EOD
     [
       {
         "val": "  x = x + vx",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  /* When x is greater than... */",
         "hide": false,
         "opts": []
       }
@@ -843,6 +851,13 @@ EOD
     [
       {
         "val": "  }",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "  /* When x is less than... */",
         "hide": false,
         "opts": []
       }
@@ -909,6 +924,13 @@ EOD
     [
       {
         "val": "Let's use the program we learned.",
+        "hide": false,
+        "opts": []
+      }
+    ],
+    [
+      {
+        "val": "Please try to touch the code.",
         "hide": false,
         "opts": []
       }
