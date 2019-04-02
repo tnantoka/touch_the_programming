@@ -12,6 +12,21 @@ By changing codes with touch, you can try drawing and animation of various shape
 ![](/docs/styles.gif)
 ![](/docs/loop.gif)
 
+## Development
+
+### Build data
+
+```
+$ ruby bin/data.rb
+```
+
+### Count bytes
+
+```
+$ ./bin/count.sh
+    5103
+```
+
 ## License
 
 MIT
