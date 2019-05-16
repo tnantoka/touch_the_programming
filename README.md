@@ -27,6 +27,11 @@ $ ./bin/count.sh
     5103
 ```
 
+## Dependencies
+
+- https://github.com/spritewidget/spritewidget
+- https://github.com/tnantoka/flutter_shapes
+
 ## License
 
 MIT
